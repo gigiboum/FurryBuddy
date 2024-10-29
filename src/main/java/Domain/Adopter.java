@@ -18,6 +18,12 @@ public class Adopter {
         this.availablePets = new ArrayList<>();
         this.adoptionRequests = new ArrayList<>();
     }
+    public void requestAdoption(Pet pet) {
+        // Permet de faire une requête vers le PetOwner
+    }
+    public void cancelRequest(Request request) {
+        // Permet d'annuler la précédente requête
+    }
 }
 
     // Permet de trouver un animal avec ou sans filtres
