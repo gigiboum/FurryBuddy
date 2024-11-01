@@ -1,16 +1,38 @@
 package Domain;
 
-public class Advertisement {
-    private String petID;
-    private String description;
-    private String pet_characteristics;
+import java.util.UUID;
 
-    public Advertisement(Pet pet, String description) {
-        this.petID = pet.getPetID();
+public class Advertisement {
+
+    // Class fields
+    public Pet pet;
+    public PetOwner petOwner;
+    public String description;
+    public Location location;
+
+    // Constructors
+    public Advertisement() {
+        this(Pet null, PetOwner null, description null, Location null);
+    }
+
+    public Advertisement(Pet pet, PetOwner petOwner, String description, Location location) {
+        this.pet = pet;
+        this.petOwner = petOwner;
         this.description = description;
-        this.pet_characteristics = pet.toString(); // résume les characteristiques du pet
+        this.location = location;
     }
-    public void cancelAdvertisement() {
-        // annule l'annonce
-    }
+
+
+    // Getters and setters
+
+    public Pet getPet() {return pet;}
+    public void setPet(Pet pet) { this.pet = pet; }
+    public PetOwner getPetOwner() {return petOwner;}
+    public void setPetOwner(PetOwner petOwner) { this.petOwner = petOwner;}
+    public String getDescription() {return description;}
+    public void setDescription(String description) { this.description = description;}
+    public Location getLocation() {return location;}
+    public void setLocation(Location location) { this.location = location;}
+
+    // functionalities / methods
 }
