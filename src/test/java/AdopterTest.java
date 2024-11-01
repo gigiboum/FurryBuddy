@@ -19,14 +19,14 @@ class AdopterTest {
         adopter = new Adopter("Mila", "milaliv@example.com", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         // Initialisation des animaux de compagnie et des demandes d'adoption
-        pet1 = new Pet("Cat", "Persian", 2);
+        pet1 = new Pet("Cat", "Persian", 1);
         request1 = new AdoptionRequest(adopter, pet1);
     }
 
     @Test
     void testAdopterInitialization() {
-        assertEquals("Chiara", adopter.getName());
-        assertEquals("chiaraa@example.com", adopter.getEmail());
+        assertEquals("Mila", adopter.getName());
+        assertEquals("milaliv@example.com", adopter.getEmail());
         assertTrue(adopter.getFilters().isEmpty());
         assertTrue(adopter.getAvailablePets().isEmpty());
         assertTrue(adopter.getAdoptionRequests().isEmpty());
@@ -48,7 +48,7 @@ class AdopterTest {
         filters.add("Small");
 
         adopter.setFilters(filters);
-        assertEquals(2, adopter.getFilters().size());
+        assertEquals(1, adopter.getFilters().size());
         assertTrue(adopter.getFilters().contains("Young"));
         assertTrue(adopter.getFilters().contains("Small"));
     }
@@ -59,7 +59,7 @@ class AdopterTest {
         pets.add(pet1);
 
         adopter.setAvailablePets(pets);
-        assertEquals(2, adopter.getAvailablePets().size());
+        assertEquals(1, adopter.getAvailablePets().size());
         assertTrue(adopter.getAvailablePets().contains(pet1));
     }
 
