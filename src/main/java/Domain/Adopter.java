@@ -15,8 +15,9 @@ public class Adopter {
 
     // Constructors
     public Adopter() {
-        this( null, null)
+        this( null, null, null, null, null );
     }
+
     public Adopter(String Name
 
     public Adopter(String name, String email, List<String> filters, List<Pet> availablePets, List<AdoptionRequest> adoptionRequests) {

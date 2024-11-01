@@ -12,7 +12,7 @@ public class Advertisement {
 
     // Constructors
     public Advertisement() {
-        this(Pet null, PetOwner null, description null, Location null);
+        this(null, null, null, null);
     }
 
     public Advertisement(Pet pet, PetOwner petOwner, String description, Location location) {
