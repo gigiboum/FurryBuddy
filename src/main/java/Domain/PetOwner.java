@@ -21,4 +21,22 @@ public class PetOwner extends User{
         super(id, email, password, firstname, lastname, location, role);
         pets = new HashSet<>();
     }
+
+    //Getters and setter
+    public Set<Pet> getPets() {return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {this.pets = pets;
+    }
+
+    public void addPet(Pet pet) {pets.add(pet);
+    }
+
+    public void removePet(Pet pet) {pets.remove(pet);
+    }
+
+// functionalities
+
+
+
 }
