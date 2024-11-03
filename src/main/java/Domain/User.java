@@ -19,7 +19,7 @@ public abstract class User {
     }
 
     public User(String email, String password, String firstname, String lastname, Location location, Role role) {
-        this(null, password, email, firstname, lastname, location, role);
+        this(null, email, password, firstname, lastname, location, role);
     }
 
     public User(UUID userID, String email, String password, String firstName, String lastName, Location location, Role role) {
@@ -94,5 +94,21 @@ public abstract class User {
     }
 
     // functionalities
+    public void replaceWith(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null");
+        }
+        this.userID = user.userID;
+        this.email = user.email;
+        this.password = user.password;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.location = user.location;
+        this.role = user.role;
+    }
+
+    public void changeLocation(Location location) {
+        this.location = location;
+    }
 
 }

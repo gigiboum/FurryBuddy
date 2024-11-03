@@ -8,6 +8,7 @@ public class Pet {
     private UUID petID;
     private String name;
     private String species;
+    private String breed;
     private boolean neutered;
     private Gender gender;
     private String description;
@@ -35,17 +36,18 @@ public class Pet {
 
     //Constructors
     public Pet(){
-        this(null, null, false, null, null, null, null, false, false, false, false, 0, 0.0,null, false,false, null);
+        this(null, null, null, false, null, null, null, null, false, false, false, false, 0, 0.0,null, false,false, null);
     }
 
-    public Pet(String name, String species, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
-        this(null, name, species,neutered, gender, description, personality, color, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, status, isSuitableForHouse, isVaccinated, medicalConditions );
+    public Pet(String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+        this(null, name, species, breed, neutered, gender, description, personality, color, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, status, isSuitableForHouse, isVaccinated, medicalConditions );
     }
 
-    public Pet(UUID petID, String name, String species, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+    public Pet(UUID petID, String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
         this.petID = petID;
         this.name = name;
         this.species = species;
+        this.breed = breed;
         this.neutered = neutered;
         this.gender = gender;
         this.description = description;
@@ -82,6 +84,12 @@ public class Pet {
     }
     public void setSpecies(String species) {
         this.species = species;
+    }
+    public String getBreed(){
+        return this.breed;
+    }
+    public void setBreed(String breed){
+        this.breed = breed;
     }
     public boolean isNeutered() {
         return neutered;
@@ -163,4 +171,24 @@ public class Pet {
     }
 
     // functionalities / methods
+    public void replaceWith(Pet pet){
+        this.petID = pet.petID;
+        this.name = pet.name;
+        this.species = pet.species;
+        this.neutered = pet.neutered;
+        this.gender = pet.gender;
+        this.description = pet.description;
+        this.personality = pet.personality;
+        this.color = pet.color;
+        this.isCompatibleWithInexperiencedOwners = pet.isCompatibleWithInexperiencedOwners;
+        this.isCompatibleWithKids = pet.isCompatibleWithKids;
+        this.isCompatibleWithFamilies = pet.isCompatibleWithFamilies;
+        this.isCompatibleWithOtherAnimals = pet.isCompatibleWithOtherAnimals;
+        this.age = pet.age;
+        this.price = pet.price;
+        this.status = pet.status;
+        this.isSuitableForHouse = pet.isSuitableForHouse;
+        this.isVaccinated = pet.isVaccinated;
+        this.medicalConditions = pet.medicalConditions;
+    }
 }

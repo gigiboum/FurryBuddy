@@ -9,19 +9,24 @@ public class Advertisement {
     public PetOwner petOwner;
     public String description;
     public Location location;
+    public Status status;
+
+    public enum Status {
+        AVAILABLE, UNAVAILABLE
+    }
 
     // Constructors
     public Advertisement() {
-        this(null, null, null, null);
+        this(null, null, null, null, null);
     }
 
-    public Advertisement(Pet pet, PetOwner petOwner, String description, Location location) {
+    public Advertisement(Pet pet, PetOwner petOwner, String description, Location location, Status status) {
         this.pet = pet;
         this.petOwner = petOwner;
         this.description = description;
         this.location = location;
+        this.status = status;
     }
-
 
     // Getters and setters
 
@@ -33,6 +38,7 @@ public class Advertisement {
     public void setDescription(String description) { this.description = description;}
     public Location getLocation() {return location;}
     public void setLocation(Location location) { this.location = location;}
+    public Status getStatus() {return status;}
+    public void setStatus(Status status) {this.status = status;}
 
-    // functionalities / methods
 }
