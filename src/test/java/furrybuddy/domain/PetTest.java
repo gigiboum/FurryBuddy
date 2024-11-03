@@ -1,5 +1,6 @@
-package Domain;
-import java.util.UUID;
+package furrybuddy.domain;
+
+import Domain.Pet;
 
 public class PetTest {
 
@@ -37,7 +38,7 @@ public class PetTest {
         System.out.println();
 
         // Test parameterized constructor
-        Pet pet2 = new Pet("Milo", "Cat", false, Pet.Gender.FEMALE, "A calm Siamese cat.", "Calm", "Brown",
+        Pet pet2 = new Pet("Milo", "Cat", "Siamese", false, Pet.Gender.FEMALE, "A calm Siamese cat.", "Calm", "Brown",
                 true, true, true, false, 2, 300.0, Pet.Status.AVAILABLE, false, true, "None");
 
         System.out.println("Pet 2 Details:");
