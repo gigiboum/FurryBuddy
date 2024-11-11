@@ -21,19 +21,21 @@ class UserTest {
     }
 
     @BeforeEach
-    void setUp() { Dummy = new User(); }
+    void setUp() {
+        Dummy = new TestDummy("test@example.com", "password123", "John", "Doe", new Location("City", "67890", "Address"), User.Role.ADOPTER);
+    }
 
 
     // Test que les constructeurs sont correctement définis
 
     @Test
     void testParameterizedConstructor() {
-        assertEquals("test@example.com", user.getEmail());
-        assertEquals("password123", user.getPassword());
-        assertEquals("John", user.getFirstName());
-        assertEquals("Doe", user.getLastName());
-        assertEquals("City", user.getLocation().getCity());
-        assertEquals(User.Role.ADOPTER, user.getRole());
+        assertEquals("test@example.com", Dummy.getEmail());
+        assertEquals("password123", Dummy.getPassword());
+        assertEquals("John", Dummy.getFirstName());
+        assertEquals("Doe", Dummy.getLastName());
+        assertEquals("City", Dummy.getLocation().getTown());
+        assertEquals(User.Role.ADOPTER, Dummy.getRole());
     }
 
 
@@ -42,45 +44,45 @@ class UserTest {
     @Test
     void testSetUserID() {
         UUID newID = UUID.randomUUID();
-        user.setUserID(newID);
-        assertEquals(newID, user.getUserID());
+        Dummy.setUserID(newID);
+        assertEquals(newID, Dummy.getUserID());
     }
 
     @Test
     void testSetEmail() {
-        user.setEmail("newemail@example.com");
-        assertEquals("newemail@example.com", user.getEmail());
+        Dummy.setEmail("newemail@example.com");
+        assertEquals("newemail@example.com", Dummy.getEmail());
     }
 
     @Test
     void testSetPassword() {
-        user.setPassword("newpassword");
-        assertEquals("newpassword", user.getPassword());
+        Dummy.setPassword("newpassword");
+        assertEquals("newpassword", Dummy.getPassword());
     }
 
     @Test
     void testSetFirstName() {
-        user.setFirstName("Jane");
-        assertEquals("Jane", user.getFirstName());
+        Dummy.setFirstName("Jane");
+        assertEquals("Jane", Dummy.getFirstName());
     }
 
     @Test
     void testSetLastName() {
-        user.setLastName("Smith");
-        assertEquals("Smith", user.getLastName());
+        Dummy.setLastName("Smith");
+        assertEquals("Smith", Dummy.getLastName());
     }
 
     @Test
     void testSetLocation() {
-        Location newLocation = new Location("NewCity", "NewCountry");
-        user.setLocation(newLocation);
-        assertEquals("NewCity", user.getLocation().getCity());
-        assertEquals("NewCountry", user.getLocation().getCountry());
+        Location newLocation = new Location("NewCity", "67790", "NewAddress");
+        Dummy.setLocation(newLocation);
+        assertEquals("NewCity", Dummy.getLocation().getTown());
+        assertEquals("NewAddress", Dummy.getLocation().getAddress());
     }
 
     @Test
     void testSetRole() {
-        user.setRole(User.Role.PET_OWNER);
-        assertEquals(User.Role.PET_OWNER, user.getRole());
+        Dummy.setRole(User.Role.PET_OWNER);
+        assertEquals(User.Role.PET_OWNER, Dummy.getRole());
     }
 }
