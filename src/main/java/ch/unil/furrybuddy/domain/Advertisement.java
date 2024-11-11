@@ -1,6 +1,4 @@
-package Domain;
-
-import java.util.UUID;
+package ch.unil.furrybuddy.domain;
 
 public class Advertisement {
 

@@ -1,4 +1,4 @@
-package Domain;
+package ch.unil.furrybuddy.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,10 @@ public class Adopter extends User {
     }
 
     public AdoptionRequest createAdoptionRequest(Advertisement advertisement) {
-        AdoptionRequest request = new AdoptionRequest(this, advertisement, AdoptionRequest.Status.PENDING);
+        var request = new AdoptionRequest();
+        request.setAdopter(this);
+        request.setAdvertisement(advertisement);
+        request.setStatus(AdoptionRequest.Status.PENDING);
         adoptionRequests.add(request);
 
         return request;

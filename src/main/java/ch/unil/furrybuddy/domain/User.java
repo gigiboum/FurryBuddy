@@ -1,4 +1,4 @@
-package Domain;
+package ch.unil.furrybuddy.domain;
 
 import java.util.UUID;
 

@@ -1,6 +1,5 @@
-package furrybuddy.domain;
+package ch.unil.furrybuddy.domain;
 
-import Domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -74,7 +73,7 @@ class AdopterTest {
 
     @Test
     void testCreateAdoptionRequest() {
-        AdoptionRequest newRequest = adopter.createAdoptionRequest(advertisement1);
+        var newRequest = adopter.createAdoptionRequest(advertisement1);
 
         assertEquals(1, adopter.getAdoptionRequests().size());
         assertTrue(adopter.getAdoptionRequests().contains(newRequest));
@@ -83,10 +82,10 @@ class AdopterTest {
 
     @Test
     void testCancelAdoptionRequest() {
-        adopter.createAdoptionRequest(advertisement1);
+        var req = adopter.createAdoptionRequest(advertisement1);
         assertEquals(1, adopter.getAdoptionRequests().size());
 
-        adopter.cancelAdoptionRequest(request1);
+        adopter.cancelAdoptionRequest(req);
         assertEquals(0, adopter.getAdoptionRequests().size());
     }
 }

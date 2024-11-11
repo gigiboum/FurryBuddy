@@ -1,6 +1,5 @@
-package furrybuddy.domain;
+package ch.unil.furrybuddy.domain;
 
-import Domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

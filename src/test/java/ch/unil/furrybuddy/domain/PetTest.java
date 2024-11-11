@@ -1,6 +1,4 @@
-package furrybuddy.domain;
-
-import Domain.Pet;
+package ch.unil.furrybuddy.domain;
 
 public class PetTest {
 
