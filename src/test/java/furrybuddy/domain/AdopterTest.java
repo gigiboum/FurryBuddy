@@ -50,8 +50,6 @@ class AdopterTest {
     void testAdopterInitialization() {
         assertEquals("Mila", adopter.getFirstName());
         assertEquals("milaliv@example.com", adopter.getEmail());
-//        assertTrue(adopter.getFilters().isEmpty());
-//        assertTrue(adopter.getAvailablePets().isEmpty());
         assertTrue(adopter.getAdoptionRequests().isEmpty());
     }
 
@@ -64,28 +62,6 @@ class AdopterTest {
         assertEquals("milaliv@example.com", adopter.getEmail());
     }
 
-//    @Test
-//    void testAddFilter() {
-//        List<String> filters = new ArrayList<>();
-//        filters.add("Young");
-//        filters.add("Small");
-//
-//        adopter.setFilters(filters);
-//        assertEquals(1, adopter.getFilters().size());
-//        assertTrue(adopter.getFilters().contains("Young"));
-//        assertTrue(adopter.getFilters().contains("Small"));
-//    }
-
-//    @Test
-//    void testAvailablePets() {
-//        List<Pet> pets = new ArrayList<>();
-//        pets.add(pet1);
-//
-//        adopter.setAvailablePets(pets);
-//        assertEquals(1, adopter.getAvailablePets().size());
-//        assertTrue(adopter.getAvailablePets().contains(pet1));
-//    }
-
     @Test
     void testAddAdoptionRequest() {
         List<AdoptionRequest> requests = new ArrayList<>();
@@ -94,5 +70,23 @@ class AdopterTest {
         adopter.setAdoptionRequests(requests);
         assertEquals(1, adopter.getAdoptionRequests().size());
         assertTrue(adopter.getAdoptionRequests().contains(request1));
+    }
+
+    @Test
+    void testCreateAdoptionRequest() {
+        AdoptionRequest newRequest = adopter.createAdoptionRequest(advertisement1);
+
+        assertEquals(1, adopter.getAdoptionRequests().size());
+        assertTrue(adopter.getAdoptionRequests().contains(newRequest));
+        assertEquals(AdoptionRequest.Status.PENDING, newRequest.getStatus());
+    }
+
+    @Test
+    void testCancelAdoptionRequest() {
+        adopter.createAdoptionRequest(advertisement1);
+        assertEquals(1, adopter.getAdoptionRequests().size());
+
+        adopter.cancelAdoptionRequest(request1);
+        assertEquals(0, adopter.getAdoptionRequests().size());
     }
 }
