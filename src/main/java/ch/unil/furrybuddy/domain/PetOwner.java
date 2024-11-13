@@ -54,7 +54,7 @@ public class PetOwner extends User{
         this.advertisements = petOwner.advertisements;
     }
 
-    // functionalities
+    // actions
     public Advertisement createAdvertisement(Pet pet) {
         Advertisement ad = new Advertisement(pet, this, pet.getDescription(), this.getLocation(), Advertisement.Status.AVAILABLE);
 

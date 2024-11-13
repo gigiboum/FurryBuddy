@@ -2,7 +2,7 @@ package ch.unil.furrybuddy.domain;
 
 import java.util.UUID;
 
-public abstract class User {
+public class User {
 
     // class fields
     private UUID userID;
