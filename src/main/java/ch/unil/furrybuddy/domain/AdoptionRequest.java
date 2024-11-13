@@ -19,14 +19,9 @@ public class AdoptionRequest {
     }
 
     public AdoptionRequest(Adopter adopter, Advertisement advertisement, Status status) {
-        this(null, null, null, null);
+        this(null, adopter, advertisement, status);
     }
-//    public AdoptionRequest(Adopter adopter, Advertisement advertisement, Status status) {
-//        this.requestID = UUID.randomUUID().toString();
-//        this.adopter = adopter;
-//        this.advertisement = advertisement;
-//        this.status = Status.PENDING; // Statut initial de la demande (not sure)
-//    }
+
     public AdoptionRequest(UUID requestID, Adopter adopter, Advertisement advertisement, Status status) {
         this.requestID = requestID;
         this.adopter = adopter;
@@ -59,5 +54,13 @@ public class AdoptionRequest {
     public boolean isPending() {return this.status == Status.PENDING;
     }
 
-    //Getters and Setters
+    public void replaceWith(AdoptionRequest adoptionRequest) {
+        if (adoptionRequest == null) {
+            throw new IllegalArgumentException("Adoption Request cannot be null");
+        }
+        this.requestID = adoptionRequest.getRequestID();
+        this.adopter = adoptionRequest.getAdopter();
+        this.advertisement = adoptionRequest.getAdvertisement();
+        this.status = adoptionRequest.getStatus();
+    }
 }
