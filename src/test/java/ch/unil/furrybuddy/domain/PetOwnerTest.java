@@ -14,6 +14,10 @@ public class PetOwnerTest {
     private PetOwner petOwner;
     private Pet pet1;
     private Pet pet2;
+    private Advertisement advertisement1;
+    private Advertisement advertisement2;
+    private Adopter adopter;
+    private AdoptionRequest request;
 
     @BeforeEach
     void setUp() {
@@ -28,48 +32,74 @@ public class PetOwnerTest {
         pet1 = new Pet("Buddy", "Dog", "German Shepard", true, Pet.Gender.MALE, "Friendly", "Loyal", "Brown", true, true, true, false, 3, 150.0, Pet.Status.AVAILABLE, true, true, null);
         pet2 = new Pet("Kiti", "Cat","Siamese",false, Pet.Gender.FEMALE, "Playful", "Curious", "White", true, true, false, true, 2, 100.0, Pet.Status.AVAILABLE, false, true, null);
 
+        advertisement1 = new Advertisement(UUID.randomUUID(), pet1, petOwner, "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);
+        advertisement2 = new Advertisement(UUID.randomUUID(), pet2, petOwner, "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);
+
+        adopter = new Adopter("milaliv@example.com", "12345", "Mila", "Livron", new Location("Paris", "75000", "10 Rue de Rivoli"), User.Role.PET_OWNER);
+        request = new AdoptionRequest(UUID.randomUUID(), adopter, advertisement1, AdoptionRequest.Status.PENDING);
 
     }
 
     @Test
-    public void testAddPet(){
-        assertTrue(petOwner.getPets().isEmpty(), "Pets should be empty initially"); // Vérifie que la liste d'animaux est vide au début
-
-        //Ajouter 1 animal et vérifier sa présence
-        petOwner.addPet(pet1);
-        assertEquals(1, petOwner.getPets().size(), "Pets should contain 1 pet");
-        assertTrue(petOwner.getPets().contains(pet1), "Pet1 should be added");
-    }
-
-    @Test
-    public void testRemovePet(){
-        petOwner.addPet(pet1);
-        petOwner.addPet(pet2);
-        assertEquals(2, petOwner.getPets().size(), "Pets should contain 2 pets");
-
-        //Retirer 1 animal et vérifier
-        petOwner.removePet(pet1);
-        assertEquals(1, petOwner.getPets().size(), "Pets should contain 1 pet after removal");
-        assertFalse(petOwner.getPets().contains(pet1), "Pet1 should be removed from the list");
-        assertTrue(petOwner.getPets().contains(pet2), "The list should still contain pet 2");
-
-
-    }
-
-    @Test
-    public void testSetAndGetPet(){
+    public void testSetAndGetAd(){
         //Crée un nouvel ensemble d'animaux
-        Set<Pet> pets = new HashSet<>();
-        pets.add(pet1);
-        pets.add(pet2);
+        Set<Advertisement> ads = new HashSet<>();
+        ads.add(advertisement1);
+        ads.add(advertisement2);
 
         //Utilise le setter pour définir l'ensemble d'animaux
-        petOwner.setPets(pets);
+        petOwner.setAdvertisements(ads);
 
         //Vérifier que getter renvoie le bon ensemble
-        assertEquals(pets, petOwner.getPets());
-        assertTrue(petOwner.getPets().contains(pet1), "Pet1 should be added to the list");
-        assertTrue(petOwner.getPets().contains(pet2), "Pet2 should be added to the list");
+        assertEquals(ads, petOwner.getAdvertisements());
+        assertTrue(petOwner.getAdvertisements().contains(advertisement1), "Pet1 should be added to the list");
+        assertTrue(petOwner.getAdvertisements().contains(advertisement2), "Pet2 should be added to the list");
+    }
+
+    @Test
+    void testReplaceWith() {
+        PetOwner newPetOwner = new PetOwner(UUID.randomUUID(), "newtest@example.com", "newpassword", "NewFirst", "NewLast", petOwner.getLocation(), User.Role.PET_OWNER);
+        petOwner.replacewith(newPetOwner);
+
+        assertEquals(newPetOwner.getAdvertisements(), petOwner.getAdvertisements(), "Advertisements should be replaced");
+        assertEquals(newPetOwner.getEmail(), petOwner.getEmail(), "Email should be replaced");
+        assertEquals(newPetOwner.getPassword(), petOwner.getPassword(), "Password should be replaced");
+    }
+
+    @Test
+    void testCreateAdvertisement() {
+        Advertisement createdAd = petOwner.createAdvertisement(pet1);
+
+        assertTrue(petOwner.getAdvertisements().contains(createdAd), "Created advertisement should be added to the set");
+        assertEquals(petOwner, createdAd.getPetOwner(), "Owner of advertisement should be pet owner");
+        //TODO a revoir pour la description
+        assertEquals(pet1.getDescription(), createdAd.getDescription(), "Description of advertisement should match pet description");
+        assertEquals(Advertisement.Status.AVAILABLE, createdAd.getStatus(), "Advertisement should have AVAILABLE status");
+    }
+
+    @Test
+    void testDeleteAdvertisement() {
+        var createdAd = petOwner.createAdvertisement(pet1);
+        petOwner.deleteAdvertisement(createdAd);
+
+        assertFalse(petOwner.getAdvertisements().contains(createdAd), "Advertisement should be removed from the set");
+    }
+
+    @Test
+    void testAcceptRequest() {
+        petOwner.acceptRequest(request);
+
+        assertEquals(AdoptionRequest.Status.APPROVED, request.getStatus(), "Adoption request status should be APPROVED");
+        assertEquals(Advertisement.Status.UNAVAILABLE, request.getAdvertisement().getStatus(), "Advertisement status should be UNAVAILABLE");
+    }
+
+    @Test
+    void testRejectRequest() {
+        petOwner.rejectRequest(request);
+
+        assertEquals(AdoptionRequest.Status.REJECTED, request.getStatus(), "Adoption request status should be REJECTED");
+        assertEquals(Advertisement.Status.AVAILABLE, request.getAdvertisement().getStatus(), "Advertisement status should be UNAVAILABLE");
+
     }
 
 }

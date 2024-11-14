@@ -7,6 +7,8 @@ public class Location {
     private String address;
 
 
+    public Location(){}
+
     public Location(String town, String postalCode, String address) {
 
         this.town = town;
