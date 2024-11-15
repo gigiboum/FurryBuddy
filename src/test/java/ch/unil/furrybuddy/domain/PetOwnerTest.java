@@ -42,15 +42,15 @@ public class PetOwnerTest {
 
     @Test
     public void testSetAndGetAd(){
-        //Crée un nouvel ensemble d'animaux
+        //Creates a new set of ads
         Set<Advertisement> ads = new HashSet<>();
         ads.add(advertisement1);
         ads.add(advertisement2);
 
-        //Utilise le setter pour définir l'ensemble d'animaux
+        //Uses the setter to define the set of ads
         petOwner.setAdvertisements(ads);
 
-        //Vérifier que getter renvoie le bon ensemble
+        //Check that getter returns the correct set
         assertEquals(ads, petOwner.getAdvertisements());
         assertTrue(petOwner.getAdvertisements().contains(advertisement1), "Pet1 should be added to the list");
         assertTrue(petOwner.getAdvertisements().contains(advertisement2), "Pet2 should be added to the list");
@@ -59,7 +59,7 @@ public class PetOwnerTest {
     @Test
     void testReplaceWith() {
         PetOwner newPetOwner = new PetOwner(UUID.randomUUID(), "newtest@example.com", "newpassword", "NewFirst", "NewLast", petOwner.getLocation(), User.Role.PET_OWNER);
-        petOwner.replacewith(newPetOwner);
+        petOwner.replaceWith(newPetOwner);
 
         assertEquals(newPetOwner.getAdvertisements(), petOwner.getAdvertisements(), "Advertisements should be replaced");
         assertEquals(newPetOwner.getEmail(), petOwner.getEmail(), "Email should be replaced");
@@ -72,9 +72,16 @@ public class PetOwnerTest {
 
         assertTrue(petOwner.getAdvertisements().contains(createdAd), "Created advertisement should be added to the set");
         assertEquals(petOwner, createdAd.getPetOwner(), "Owner of advertisement should be pet owner");
-        //TODO a revoir pour la description
+
         assertEquals(pet1.getDescription(), createdAd.getDescription(), "Description of advertisement should match pet description");
         assertEquals(Advertisement.Status.AVAILABLE, createdAd.getStatus(), "Advertisement should have AVAILABLE status");
+
+        //attempt to create a second ad for the same pet, should throw an exception
+        Exception exception = assertThrows(IllegalStateException.class, () -> petOwner.createAdvertisement(pet1));
+
+        assertEquals("An advertisement for this pet already exists.", exception.getMessage(),
+                "Exception message should indicate duplicate advertisement creation is not allowed");
+
     }
 
     @Test

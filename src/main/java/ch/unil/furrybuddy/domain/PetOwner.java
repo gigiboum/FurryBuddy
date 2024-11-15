@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class PetOwner extends User {
 
-    public Set<Advertisement> advertisements;
+    private Set<Advertisement> advertisements;
 
     // Constructors
 
@@ -34,20 +34,27 @@ public class PetOwner extends User {
     }
 
     // methods
-    public void replacewith(PetOwner petOwner) {
+    public void replaceWith(PetOwner petOwner) {
+        if (petOwner == null) {
+            throw new IllegalArgumentException("Pet owner cannot be null");
+        }
         super.replaceWith(petOwner);
         this.advertisements = petOwner.advertisements;
     }
 
     //actions
     public Advertisement createAdvertisement(Pet pet) {
-        Advertisement ad = new Advertisement();
-        ad.setPet(pet);
-        ad.setPetOwner(this);
-        ad.setDescription(pet.getDescription());
-        ad.setLocation(this.getLocation());
-        ad.setStatus(Advertisement.Status.AVAILABLE);
+        if (pet == null) {
+            throw new IllegalArgumentException("Pet cannot be null");
+        }
+        // Check if an advertisement for this pet already exists
+        for (Advertisement ad : advertisements) {
+            if (ad.getPet().equals(pet)) {
+                throw new IllegalStateException("An advertisement for this pet already exists.");
+            }
+        }
 
+        Advertisement ad = new Advertisement(pet,this,pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
         advertisements.add(ad);
         return ad;
     }
