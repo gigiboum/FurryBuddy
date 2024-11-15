@@ -108,6 +108,9 @@ public class User {
     }
 
     public void changeLocation(Location location) {
+        if (location == null) {
+            throw new IllegalArgumentException("Location cannot be null");
+        }
         this.location = location;
     }
 

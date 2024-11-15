@@ -9,18 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserTest {
 
-    private User Dummy;
-
-    // Classe interne pour tester car User est abstrait.
-    private static class TestDummy extends User {
-        public TestDummy(String email, String password, String firstName, String lastName, Location location, Role role) {
-            super(email, password, firstName, lastName, location, role);
-        }
-    }
+    private User dummyUser;
 
     @BeforeEach
     void setUp() {
-        Dummy = new TestDummy("test@example.com", "password123", "John", "Doe", new Location("City", "67890", "Address"), User.Role.ADOPTER);
+        dummyUser = new User("test@example.com", "password123", "John", "Doe", new Location("City", "67890", "Address"), User.Role.ADOPTER);
     }
 
 
@@ -28,12 +21,12 @@ class UserTest {
 
     @Test
     void testParameterizedConstructor() {
-        assertEquals("test@example.com", Dummy.getEmail());
-        assertEquals("password123", Dummy.getPassword());
-        assertEquals("John", Dummy.getFirstName());
-        assertEquals("Doe", Dummy.getLastName());
-        assertEquals("City", Dummy.getLocation().getTown());
-        assertEquals(User.Role.ADOPTER, Dummy.getRole());
+        assertEquals("test@example.com", dummyUser.getEmail());
+        assertEquals("password123", dummyUser.getPassword());
+        assertEquals("John", dummyUser.getFirstName());
+        assertEquals("Doe", dummyUser.getLastName());
+        assertEquals("City", dummyUser.getLocation().getTown());
+        assertEquals(User.Role.ADOPTER, dummyUser.getRole());
     }
 
 
@@ -42,45 +35,45 @@ class UserTest {
     @Test
     void testSetUserID() {
         UUID newID = UUID.randomUUID();
-        Dummy.setUserID(newID);
-        assertEquals(newID, Dummy.getUserID());
+        dummyUser.setUserID(newID);
+        assertEquals(newID, dummyUser.getUserID());
     }
 
     @Test
     void testSetEmail() {
-        Dummy.setEmail("newemail@example.com");
-        assertEquals("newemail@example.com", Dummy.getEmail());
+        dummyUser.setEmail("newemail@example.com");
+        assertEquals("newemail@example.com", dummyUser.getEmail());
     }
 
     @Test
     void testSetPassword() {
-        Dummy.setPassword("newpassword");
-        assertEquals("newpassword", Dummy.getPassword());
+        dummyUser.setPassword("newpassword");
+        assertEquals("newpassword", dummyUser.getPassword());
     }
 
     @Test
     void testSetFirstName() {
-        Dummy.setFirstName("Jane");
-        assertEquals("Jane", Dummy.getFirstName());
+        dummyUser.setFirstName("Jane");
+        assertEquals("Jane", dummyUser.getFirstName());
     }
 
     @Test
     void testSetLastName() {
-        Dummy.setLastName("Smith");
-        assertEquals("Smith", Dummy.getLastName());
+        dummyUser.setLastName("Smith");
+        assertEquals("Smith", dummyUser.getLastName());
     }
 
     @Test
     void testSetLocation() {
         Location newLocation = new Location("NewCity", "67790", "NewAddress");
-        Dummy.setLocation(newLocation);
-        assertEquals("NewCity", Dummy.getLocation().getTown());
-        assertEquals("NewAddress", Dummy.getLocation().getAddress());
+        dummyUser.setLocation(newLocation);
+        assertEquals("NewCity", dummyUser.getLocation().getTown());
+        assertEquals("NewAddress", dummyUser.getLocation().getAddress());
     }
 
     @Test
     void testSetRole() {
-        Dummy.setRole(User.Role.PET_OWNER);
-        assertEquals(User.Role.PET_OWNER, Dummy.getRole());
+        dummyUser.setRole(User.Role.PET_OWNER);
+        assertEquals(User.Role.PET_OWNER, dummyUser.getRole());
     }
 }
