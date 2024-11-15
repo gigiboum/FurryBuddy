@@ -17,7 +17,7 @@ public class AdvertisementTest {
         @BeforeEach
         void setUp() {
             // Initialisation des objets pour le test
-            requestID = UUID.fromString("f76927fd-7b13-4dcf-9a7e-7ba382678e3b");
+            requestID = UUID.randomUUID();
             pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", "Friendly", "Beige", true, true, true, true, 3, 100.0, Pet.Status.AVAILABLE, true, true, "none"); // Exemple d'initialisation
             location = new Location("Paris", "75000", "10 Rue de Rivoli"); // Exemple d'initialisation
             petOwner = new PetOwner("milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER); // Exemple d'initialisation
@@ -36,7 +36,7 @@ public class AdvertisementTest {
         @Test
         void testSettersAndGetters() {
             // Test du setter pour ID
-            UUID advertisementID = UUID.fromString("f76927fd-7b13-4dcf-9a7e-7ba382678e3b");
+            UUID advertisementID = UUID.randomUUID();
             advertisement.setAdvertisementID(advertisementID);
             assertEquals(advertisementID, advertisement.getAdvertisementID());
 

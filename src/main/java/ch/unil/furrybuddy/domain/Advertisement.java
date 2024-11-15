@@ -6,11 +6,11 @@ public class Advertisement {
 
     // Class fields
     private UUID advertisementID;
-    public Pet pet;
-    public PetOwner petOwner;
-    public String description;
-    public Location location;
-    public Status status;
+    private Pet pet;
+    private PetOwner petOwner;
+    private String description;
+    private Location location;
+    private Status status;
 
     public enum Status {
         AVAILABLE, UNAVAILABLE
@@ -34,7 +34,6 @@ public class Advertisement {
     }
 
     // Getters and setters
-
     public UUID getAdvertisementID() {return advertisementID;}
     public void setAdvertisementID(UUID advertisementID) {this.advertisementID = advertisementID;}
     public Pet getPet() {return pet;}
