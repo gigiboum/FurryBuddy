@@ -124,15 +124,19 @@ public class Pet {
     public boolean isCompatibleWithInexperiencedOwners() {
         return isCompatibleWithInexperiencedOwners;
     }
+    public void setCompatibleWithInexperiencedOwners(boolean compatibleWithInexperiencedOwners) { isCompatibleWithInexperiencedOwners = compatibleWithInexperiencedOwners; }
     public boolean isCompatibleWithKids() {
         return isCompatibleWithKids;
     }
+    public void setCompatibleWithKids(boolean compatibleWithKids) {isCompatibleWithKids = compatibleWithKids; }
     public boolean isCompatibleWithFamilies() {
         return isCompatibleWithFamilies;
     }
+    public void setCompatibleWithFamilies(boolean compatibleWithFamilies) {isCompatibleWithFamilies = compatibleWithFamilies; }
     public boolean isCompatibleWithOtherAnimals() {
         return isCompatibleWithOtherAnimals;
     }
+    public void setCompatibleWithOtherAnimals(boolean compatibleWithOtherAnimals) {isCompatibleWithOtherAnimals = compatibleWithOtherAnimals; }
     public int getAge() {
         return age;
     }
