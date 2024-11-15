@@ -1,68 +1,193 @@
 package ch.unil.furrybuddy.domain;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class PetTest {
 
-    public static void main(String[] args) {
-        // Test default constructor
-        Pet pet1 = new Pet();
-        pet1.setName("Buddy");
-        pet1.setSpecies("Dog");
-        pet1.setNeutered(true);
-        pet1.setGender(Pet.Gender.MALE);
-        pet1.setDescription("A friendly golden retriever.");
-        pet1.setPersonality("Playful");
-        pet1.setColor("Golden");
-        pet1.setAge(3);
-        pet1.setPrice(500.0);
-        pet1.setStatus(Pet.Status.AVAILABLE);
-        pet1.setSuitableForHouse(true);
-        pet1.setVaccinated(true);
-        pet1.setMedicalConditions("None");
+    private Pet dummyPet;
 
-        System.out.println("Pet 1 Details:");
-        System.out.println("Name: " + pet1.getName());
-        System.out.println("Species: " + pet1.getSpecies());
-        System.out.println("Neutered: " + pet1.isNeutered());
-        System.out.println("Gender: " + pet1.getGender());
-        System.out.println("Description: " + pet1.getDescription());
-        System.out.println("Personality: " + pet1.getPersonality());
-        System.out.println("Color: " + pet1.getColor());
-        System.out.println("Age: " + pet1.getAge());
-        System.out.println("Price: " + pet1.getPrice());
-        System.out.println("Status: " + pet1.getStatus());
-        System.out.println("Suitable for House: " + pet1.isSuitableForHouse());
-        System.out.println("Vaccinated: " + pet1.isVaccinated());
-        System.out.println("Medical Conditions: " + pet1.getMedicalConditions());
-        System.out.println();
-
-        // Test parameterized constructor
-        Pet pet2 = new Pet("Milo", "Cat", "Siamese", false, Pet.Gender.FEMALE, "A calm Siamese cat.", "Calm", "Brown",
-                true, true, true, false, 2, 300.0, Pet.Status.AVAILABLE, false, true, "None");
-
-        System.out.println("Pet 2 Details:");
-        System.out.println("Name: " + pet2.getName());
-        System.out.println("Species: " + pet2.getSpecies());
-        System.out.println("Neutered: " + pet2.isNeutered());
-        System.out.println("Gender: " + pet2.getGender());
-        System.out.println("Description: " + pet2.getDescription());
-        System.out.println("Personality: " + pet2.getPersonality());
-        System.out.println("Color: " + pet2.getColor());
-        System.out.println("Age: " + pet2.getAge());
-        System.out.println("Price: " + pet2.getPrice());
-        System.out.println("Status: " + pet2.getStatus());
-        System.out.println("Suitable for House: " + pet2.isSuitableForHouse());
-        System.out.println("Vaccinated: " + pet2.isVaccinated());
-        System.out.println("Medical Conditions: " + pet2.getMedicalConditions());
-        System.out.println();
-
-        // Update some fields
-        pet2.setStatus(Pet.Status.ADOPTED);
-        pet2.setPrice(250.0);
-
-        System.out.println("Updated Pet 2 Details:");
-        System.out.println("Name: " + pet2.getName());
-        System.out.println("Status: " + pet2.getStatus());
-        System.out.println("Price: " + pet2.getPrice());
+    @BeforeEach
+    void setUp() {
+        dummyPet = new Pet("Buddy", "Dog", "Golden Retriever", true, Pet.Gender.MALE, "Friendly", "Playful", "Golden", true, true, true, true, 3, 300.0, Pet.Status.AVAILABLE, true, true, "None");
     }
+
+    // Test that the parameterized constructor initializes the fields correctly
+    @Test
+    void testParameterizedConstructor() {
+        assertEquals("Buddy", dummyPet.getName());
+        assertEquals("Dog", dummyPet.getSpecies());
+        assertEquals("Golden Retriever", dummyPet.getBreed());
+        assertTrue(dummyPet.isNeutered());
+        assertEquals(Pet.Gender.MALE, dummyPet.getGender());
+        assertEquals("Friendly", dummyPet.getDescription());
+        assertEquals("Playful", dummyPet.getPersonality());
+        assertEquals("Golden", dummyPet.getColor());
+        assertTrue(dummyPet.isCompatibleWithInexperiencedOwners());
+        assertTrue(dummyPet.isCompatibleWithKids());
+        assertTrue(dummyPet.isCompatibleWithFamilies());
+        assertTrue(dummyPet.isCompatibleWithOtherAnimals());
+        assertEquals(3, dummyPet.getAge());
+        assertEquals(300.0, dummyPet.getPrice());
+        assertEquals(Pet.Status.AVAILABLE, dummyPet.getStatus());
+        assertTrue(dummyPet.isSuitableForHouse());
+        assertTrue(dummyPet.isVaccinated());
+        assertEquals("None", dummyPet.getMedicalConditions());
+    }
+
+    // Test setters and getters for name
+    @Test
+    void testSetName() {
+        dummyPet.setName("Max");
+        assertEquals("Max", dummyPet.getName());
+    }
+
+    // Test setters and getters for species
+    @Test
+    void testSetSpecies() {
+        dummyPet.setSpecies("Cat");
+        assertEquals("Cat", dummyPet.getSpecies());
+    }
+
+    // Test setters and getters for breed
+    @Test
+    void testSetBreed() {
+        dummyPet.setBreed("Siamese");
+        assertEquals("Siamese", dummyPet.getBreed());
+    }
+
+    // Test setters and getters for neutered
+    @Test
+    void testSetNeutered() {
+        dummyPet.setNeutered(false);
+        assertFalse(dummyPet.isNeutered());
+    }
+
+    // Test setters and getters for gender
+    @Test
+    void testSetGender() {
+        dummyPet.setGender(Pet.Gender.FEMALE);
+        assertEquals(Pet.Gender.FEMALE, dummyPet.getGender());
+    }
+
+    // Test setters and getters for description
+    @Test
+    void testSetDescription() {
+        dummyPet.setDescription("Loyal");
+        assertEquals("Loyal", dummyPet.getDescription());
+    }
+
+    // Test setters and getters for personality
+    @Test
+    void testSetPersonality() {
+        dummyPet.setPersonality("Energetic");
+        assertEquals("Energetic", dummyPet.getPersonality());
+    }
+
+    // Test setters and getters for color
+    @Test
+    void testSetColor() {
+        dummyPet.setColor("Brown");
+        assertEquals("Brown", dummyPet.getColor());
+    }
+
+    // Test setters and getters for compatibility with inexperienced owners
+    @Test
+    void testSetCompatibilityWithInexperiencedOwners() {
+        dummyPet.setCompatibleWithInexperiencedOwners(false);
+        assertFalse(dummyPet.isCompatibleWithInexperiencedOwners());
+    }
+
+    // Test setters and getters for compatibility with kids
+    @Test
+    void testSetCompatibilityWithKids() {
+        dummyPet.setCompatibleWithKids(false);
+        assertFalse(dummyPet.isCompatibleWithKids());
+    }
+
+    // Test setters and getters for compatibility with families
+    @Test
+    void testSetCompatibilityWithFamilies() {
+        dummyPet.setCompatibleWithFamilies(false);
+        assertFalse(dummyPet.isCompatibleWithFamilies());
+    }
+
+    // Test setters and getters for compatibility with other animals
+    @Test
+    void testSetCompatibilityWithOtherAnimals() {
+        dummyPet.setCompatibleWithOtherAnimals(false);
+        assertFalse(dummyPet.isCompatibleWithOtherAnimals());
+    }
+
+    // Test setters and getters for age
+    @Test
+    void testSetAge() {
+        dummyPet.setAge(4);
+        assertEquals(4, dummyPet.getAge());
+    }
+
+    // Test setters and getters for price
+    @Test
+    void testSetPrice() {
+        dummyPet.setPrice(350.0);
+        assertEquals(350.0, dummyPet.getPrice());
+    }
+
+    // Test setters and getters for status
+    @Test
+    void testSetStatus() {
+        dummyPet.setStatus(Pet.Status.PENDING);
+        assertEquals(Pet.Status.PENDING, dummyPet.getStatus());
+    }
+
+    // Test setters and getters for suitability for house
+    @Test
+    void testSetSuitableForHouse() {
+        dummyPet.setSuitableForHouse(false);
+        assertFalse(dummyPet.isSuitableForHouse());
+    }
+
+    // Test setters and getters for vaccinated status
+    @Test
+    void testSetVaccinated() {
+        dummyPet.setVaccinated(false);
+        assertFalse(dummyPet.isVaccinated());
+    }
+
+    // Test setters and getters for medical conditions
+    @Test
+    void testSetMedicalConditions() {
+        dummyPet.setMedicalConditions("None");
+        assertEquals("None", dummyPet.getMedicalConditions());
+    }
+
+    // Test replaceWith method
+    @Test
+    void testReplaceWith_UpdatesPetFields() {
+        Pet newPet = new Pet("Charlie", "Dog", "Labrador", true, Pet.Gender.MALE, "Loyal", "Friendly", "Yellow", true, true, false, true, 5, 400.0, Pet.Status.AVAILABLE, true, true, "None");
+        dummyPet.replaceWith(newPet);
+
+        assertEquals("Charlie", dummyPet.getName());
+        assertEquals("Dog", dummyPet.getSpecies());
+        assertEquals("Labrador", dummyPet.getBreed());
+        assertTrue(dummyPet.isNeutered());
+        assertEquals(Pet.Gender.MALE, dummyPet.getGender());
+        assertEquals("Loyal", dummyPet.getDescription());
+        assertEquals("Friendly", dummyPet.getPersonality());
+        assertEquals("Yellow", dummyPet.getColor());
+        assertTrue(dummyPet.isCompatibleWithInexperiencedOwners());
+        assertTrue(dummyPet.isCompatibleWithKids());
+        assertFalse(dummyPet.isCompatibleWithFamilies());
+        assertTrue(dummyPet.isCompatibleWithOtherAnimals());
+        assertEquals(5, dummyPet.getAge());
+        assertEquals(400.0, dummyPet.getPrice());
+        assertEquals(Pet.Status.AVAILABLE, dummyPet.getStatus());
+        assertTrue(dummyPet.isSuitableForHouse());
+        assertTrue(dummyPet.isVaccinated());
+        assertEquals("None", dummyPet.getMedicalConditions());
+    }
+
 }
 

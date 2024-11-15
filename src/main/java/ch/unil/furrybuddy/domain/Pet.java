@@ -86,7 +86,7 @@ public class Pet {
         this.species = species;
     }
     public String getBreed(){
-        return this.breed;
+        return breed;
     }
     public void setBreed(String breed){
         this.breed = breed;
@@ -179,6 +179,7 @@ public class Pet {
         this.petID = pet.petID;
         this.name = pet.name;
         this.species = pet.species;
+        this.breed = pet.breed;
         this.neutered = pet.neutered;
         this.gender = pet.gender;
         this.description = pet.description;
