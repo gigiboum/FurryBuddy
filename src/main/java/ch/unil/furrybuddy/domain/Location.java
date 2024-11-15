@@ -1,7 +1,6 @@
 package ch.unil.furrybuddy.domain;
 
 public class Location {
-    private String country;
     private String town;
     private String postalCode;
     private String address;

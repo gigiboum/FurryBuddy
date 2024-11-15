@@ -31,19 +31,20 @@ public class Adopter extends User {
         this.adoptionRequests = adoptionRequests;
     }
 
-    // functionalities / methods
+    // actions
 
-    // Permet de trouver un animal avec ou sans filtres
-    public List<Pet> findPet(List<String> filters) {
-        List<Pet> allPets = new ArrayList<>();
-        List<Pet> filteredPets = new ArrayList<>();
+    // Permet de trouver un animal avec ou sans filtres TODO
+//    public List<Pet> findPet(List<String> filters) {
+//        List<Pet> allPets = new ArrayList<>();
+//        List<Pet> filteredPets = new ArrayList<>();
+//
+//        if (filters == null || filters.isEmpty()) {
+//            return allPets; // Retourne tous les animaux disponibles si aucun filtre
+//        }
+//        return filteredPets;
+//    }
 
-        if (filters == null || filters.isEmpty()) {
-            return allPets; // Retourne tous les animaux disponibles si aucun filtre
-        }
-        return filteredPets;
-    }
-
+    // create a new adoption request
     public AdoptionRequest createAdoptionRequest(Advertisement advertisement) {
         var request = new AdoptionRequest();
         request.setAdopter(this);
@@ -54,6 +55,7 @@ public class Adopter extends User {
         return request;
     }
 
+    // cancel an existing adoption request
     public void cancelAdoptionRequest(AdoptionRequest request) {
         request.setStatus(AdoptionRequest.Status.CANCELLED);
         adoptionRequests.remove(request);

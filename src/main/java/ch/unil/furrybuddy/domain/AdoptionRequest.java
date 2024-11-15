@@ -47,13 +47,11 @@ public class AdoptionRequest {
     }
     public void setStatus(Status status) {this.status = status;
     }
-    public void approveRequest() {this.status = Status.APPROVED;
-    }
-    public void rejectRequest() {this.status = Status.REJECTED;
-    }
+
     public boolean isPending() {return this.status == Status.PENDING;
     }
 
+    //TODO
     public void replaceWith(AdoptionRequest adoptionRequest) {
         if (adoptionRequest == null) {
             throw new IllegalArgumentException("Adoption Request cannot be null");
