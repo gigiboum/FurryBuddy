@@ -36,7 +36,7 @@ public class Adopter extends User {
     // create a new adoption request
     public AdoptionRequest createAdoptionRequest(Advertisement advertisement) {
         var request = new AdoptionRequest();
-        request.setAdopter(this);
+        request.setAdopterID(this.getUserID());
         request.setAdvertisement(advertisement);
         request.setStatus(AdoptionRequest.Status.PENDING);
         adoptionRequests.add(request);

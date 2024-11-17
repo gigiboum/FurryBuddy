@@ -20,15 +20,15 @@ public class AdvertisementTest {
             requestID = UUID.randomUUID();
             pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", "Friendly", "Beige", true, true, true, true, 3, 100.0, Pet.Status.AVAILABLE, true, true, "none"); // Exemple d'initialisation
             location = new Location("Paris", "75000", "10 Rue de Rivoli"); // Exemple d'initialisation
-            petOwner = new PetOwner("milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER); // Exemple d'initialisation
-            advertisement = new Advertisement(requestID, pet, petOwner, "Friendly and playful dog", location, Advertisement.Status.AVAILABLE);
+            petOwner = new PetOwner(UUID.randomUUID(),"milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER); // Exemple d'initialisation
+            advertisement = new Advertisement(requestID, pet, petOwner.getUserID(),"Friendly and playful dog", location, Advertisement.Status.AVAILABLE);
         }
 
         @Test
         void testAdvertisementInitialization() {
             assertEquals(requestID, advertisement.getAdvertisementID());
             assertEquals(pet, advertisement.getPet());
-            assertEquals(petOwner, advertisement.getPetOwner());
+            assertEquals(petOwner.getUserID(), advertisement.getPetOwnerID());
             assertEquals("Friendly and playful dog", advertisement.getDescription());
             assertEquals(location, advertisement.getLocation());
         }
@@ -46,9 +46,9 @@ public class AdvertisementTest {
             assertEquals(newPet, advertisement.getPet());
 
             // Création d'un nouvel objet PetOwner pour tester les setters
-            PetOwner newPetOwner = new PetOwner("milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER);
-            advertisement.setPetOwner(newPetOwner);
-            assertEquals(newPetOwner, advertisement.getPetOwner());
+            PetOwner newPetOwner = new PetOwner(UUID.randomUUID(),"milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER);
+            advertisement.setPetOwnerID(newPetOwner.getUserID());
+            assertEquals(newPetOwner.getUserID(), advertisement.getPetOwnerID());
 
             // Test du setter pour description
             advertisement.setDescription("Calm and affectionate cat");

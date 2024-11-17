@@ -54,7 +54,7 @@ public class PetOwner extends User {
             }
         }
 
-        Advertisement ad = new Advertisement(pet,this,pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
+        Advertisement ad = new Advertisement(pet, this.getUserID(), pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
         advertisements.add(ad);
         return ad;
     }
@@ -66,6 +66,7 @@ public class PetOwner extends User {
     public void acceptRequest(AdoptionRequest adoptionRequest) {
         if (adoptionRequest.getStatus() == AdoptionRequest.Status.PENDING) {
             adoptionRequest.setStatus(AdoptionRequest.Status.APPROVED);
+
             adoptionRequest.getAdvertisement().setStatus(Advertisement.Status.UNAVAILABLE);
         }
     }

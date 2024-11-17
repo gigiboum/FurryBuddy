@@ -23,16 +23,8 @@ class AdopterTest {
 
         // Initialisation des animaux de compagnie et des demandes d'adoption
         pet1 = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, Pet.Status.AVAILABLE, true, true, "none");
-        advertisement1 = new Advertisement(pet1, new PetOwner(
-                "jean@gmail.com",
-                "1234",
-                "jean",
-                "dupont",
-                new Location(
-                        "Paris",
-                        "75000",
-                        "Tour eiffel"),
-                User.Role.PET_OWNER),
+        var petOwnerID = UUID.randomUUID();
+        advertisement1 = new Advertisement(pet1, petOwnerID,
                 "description",
                 new Location(
                         "Paris",
@@ -41,7 +33,7 @@ class AdopterTest {
                 Advertisement.Status.AVAILABLE
                 );
 
-        request1 = new AdoptionRequest(UUID.randomUUID(), adopter, advertisement1, AdoptionRequest.Status.PENDING);
+        request1 = new AdoptionRequest(UUID.randomUUID(), adopter.getUserID(), advertisement1, AdoptionRequest.Status.PENDING);
 
     }
 

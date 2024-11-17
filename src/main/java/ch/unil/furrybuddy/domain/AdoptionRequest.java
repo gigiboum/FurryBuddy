@@ -4,7 +4,8 @@ import java.util.UUID;
 
 public class AdoptionRequest {
     private UUID requestID;
-    private Adopter adopter;
+//    private Adopter adopter;
+    private UUID adopterID;
     private Advertisement advertisement;
     private Status status;
 
@@ -18,13 +19,13 @@ public class AdoptionRequest {
         this(null, null, null);
     }
 
-    public AdoptionRequest(Adopter adopter, Advertisement advertisement, Status status) {
-        this(null, adopter, advertisement, status);
+    public AdoptionRequest(UUID adopterID, Advertisement advertisement, Status status) {
+        this(null, adopterID, advertisement, status);
     }
 
-    public AdoptionRequest(UUID requestID, Adopter adopter, Advertisement advertisement, Status status) {
+    public AdoptionRequest(UUID requestID, UUID adopterID, Advertisement advertisement, Status status) {
         this.requestID = requestID;
-        this.adopter = adopter;
+        this.adopterID = adopterID;
         this.advertisement = advertisement;
         this.status = status;
     }
@@ -35,9 +36,9 @@ public class AdoptionRequest {
     public void setRequestID(UUID requestID) {
         this.requestID = requestID;
     }
-    public Adopter getAdopter() {return adopter;
+    public UUID getAdopterID() {return adopterID;
     }
-    public void setAdopter(Adopter adopter) {this.adopter = adopter;
+    public void setAdopterID(UUID adopterID) {this.adopterID = adopterID;
     }
     public Advertisement getAdvertisement() {return advertisement;
     }
@@ -56,7 +57,7 @@ public class AdoptionRequest {
             throw new IllegalArgumentException("Adoption Request cannot be null");
         }
         this.requestID = adoptionRequest.getRequestID();
-        this.adopter = adoptionRequest.getAdopter();
+        this.adopterID = adoptionRequest.getAdopterID();
         this.advertisement = adoptionRequest.getAdvertisement();
         this.status = adoptionRequest.getStatus();
     }

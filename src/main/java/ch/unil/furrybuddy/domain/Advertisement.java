@@ -7,7 +7,7 @@ public class Advertisement {
     // Class fields
     private UUID advertisementID;
     private Pet pet;
-    private PetOwner petOwner;
+    private UUID petOwnerID;
     private String description;
     private Location location;
     private Status status;
@@ -21,13 +21,13 @@ public class Advertisement {
         this(null, null, null, null, null);
     }
 
-    public Advertisement(Pet pet, PetOwner petOwner, String description, Location location, Status status){
-        this(null, pet, petOwner, description, location, status);
+    public Advertisement(Pet pet, UUID petOwnerID, String description, Location location, Status status){
+        this(null, pet, petOwnerID, description, location, status);
     }
-    public Advertisement(UUID advertisementID, Pet pet, PetOwner petOwner, String description, Location location, Status status) {
+    public Advertisement(UUID advertisementID, Pet pet, UUID petOwnerID, String description, Location location, Status status) {
         this.advertisementID = advertisementID;
         this.pet = pet;
-        this.petOwner = petOwner;
+        this.petOwnerID = petOwnerID;
         this.description = description;
         this.location = location;
         this.status = status;
@@ -38,8 +38,8 @@ public class Advertisement {
     public void setAdvertisementID(UUID advertisementID) {this.advertisementID = advertisementID;}
     public Pet getPet() {return pet;}
     public void setPet(Pet pet) { this.pet = pet; }
-    public PetOwner getPetOwner() {return petOwner;}
-    public void setPetOwner(PetOwner petOwner) { this.petOwner = petOwner;}
+    public UUID getPetOwnerID() {return petOwnerID;}
+    public void setPetOwnerID(UUID petOwnerID) { this.petOwnerID = petOwnerID;}
     public String getDescription() {return description;}
     public void setDescription(String description) { this.description = description;}
     public Location getLocation() {return location;}
@@ -53,7 +53,7 @@ public class Advertisement {
         }
         this.advertisementID = advertisement.advertisementID;
         this.pet = advertisement.pet;
-        this.petOwner = advertisement.petOwner;
+        this.petOwnerID = advertisement.petOwnerID;
         this.description = advertisement.description;
         this.location = advertisement.location;
         this.status = advertisement.status;
