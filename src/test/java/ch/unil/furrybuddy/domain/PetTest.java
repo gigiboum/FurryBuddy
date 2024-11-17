@@ -3,6 +3,8 @@ package ch.unil.furrybuddy.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PetTest {
@@ -37,126 +39,115 @@ public class PetTest {
         assertEquals("None", dummyPet.getMedicalConditions());
     }
 
-    // Test setters and getters for name
+    // Test setters and getters
+    @Test
+    void testSetPetID(){
+        var petID = UUID.randomUUID();
+        dummyPet.setPetID(petID);
+        assertEquals(petID, dummyPet.getPetID());
+    }
     @Test
     void testSetName() {
         dummyPet.setName("Max");
         assertEquals("Max", dummyPet.getName());
     }
 
-    // Test setters and getters for species
     @Test
     void testSetSpecies() {
         dummyPet.setSpecies("Cat");
         assertEquals("Cat", dummyPet.getSpecies());
     }
 
-    // Test setters and getters for breed
     @Test
     void testSetBreed() {
         dummyPet.setBreed("Siamese");
         assertEquals("Siamese", dummyPet.getBreed());
     }
 
-    // Test setters and getters for neutered
     @Test
     void testSetNeutered() {
         dummyPet.setNeutered(false);
         assertFalse(dummyPet.isNeutered());
     }
 
-    // Test setters and getters for gender
     @Test
     void testSetGender() {
         dummyPet.setGender(Pet.Gender.FEMALE);
         assertEquals(Pet.Gender.FEMALE, dummyPet.getGender());
     }
 
-    // Test setters and getters for description
     @Test
     void testSetDescription() {
         dummyPet.setDescription("Loyal");
         assertEquals("Loyal", dummyPet.getDescription());
     }
 
-    // Test setters and getters for personality
     @Test
     void testSetPersonality() {
         dummyPet.setPersonality("Energetic");
         assertEquals("Energetic", dummyPet.getPersonality());
     }
 
-    // Test setters and getters for color
     @Test
     void testSetColor() {
         dummyPet.setColor("Brown");
         assertEquals("Brown", dummyPet.getColor());
     }
 
-    // Test setters and getters for compatibility with inexperienced owners
     @Test
     void testSetCompatibilityWithInexperiencedOwners() {
         dummyPet.setCompatibleWithInexperiencedOwners(false);
         assertFalse(dummyPet.isCompatibleWithInexperiencedOwners());
     }
 
-    // Test setters and getters for compatibility with kids
     @Test
     void testSetCompatibilityWithKids() {
         dummyPet.setCompatibleWithKids(false);
         assertFalse(dummyPet.isCompatibleWithKids());
     }
 
-    // Test setters and getters for compatibility with families
     @Test
     void testSetCompatibilityWithFamilies() {
         dummyPet.setCompatibleWithFamilies(false);
         assertFalse(dummyPet.isCompatibleWithFamilies());
     }
 
-    // Test setters and getters for compatibility with other animals
     @Test
     void testSetCompatibilityWithOtherAnimals() {
         dummyPet.setCompatibleWithOtherAnimals(false);
         assertFalse(dummyPet.isCompatibleWithOtherAnimals());
     }
 
-    // Test setters and getters for age
     @Test
     void testSetAge() {
         dummyPet.setAge(4);
         assertEquals(4, dummyPet.getAge());
     }
 
-    // Test setters and getters for price
     @Test
     void testSetPrice() {
         dummyPet.setPrice(350.0);
         assertEquals(350.0, dummyPet.getPrice());
     }
 
-    // Test setters and getters for status
     @Test
     void testSetStatus() {
         dummyPet.setStatus(Pet.Status.PENDING);
         assertEquals(Pet.Status.PENDING, dummyPet.getStatus());
     }
 
-    // Test setters and getters for suitability for house
     @Test
     void testSetSuitableForHouse() {
         dummyPet.setSuitableForHouse(false);
         assertFalse(dummyPet.isSuitableForHouse());
     }
 
-    // Test setters and getters for vaccinated status
     @Test
     void testSetVaccinated() {
         dummyPet.setVaccinated(false);
         assertFalse(dummyPet.isVaccinated());
     }
 
-    // Test setters and getters for medical conditions
     @Test
     void testSetMedicalConditions() {
         dummyPet.setMedicalConditions("None");
