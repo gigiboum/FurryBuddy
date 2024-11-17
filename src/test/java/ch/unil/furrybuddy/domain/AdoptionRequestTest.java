@@ -89,29 +89,25 @@ public class AdoptionRequestTest {
         assertEquals(AdoptionRequest.Status.APPROVED, adoptionRequest.getStatus(), "Adoption request should be approved");
     }
 
-    //TODO
-//    @Test
-//    void testReplaceWith() {
-//        Adopter newAdopter = new Adopter(UUID.randomUUID(), "newadopter@example.com", "password", "NewFirstName", "NewLastName", new Location("NewTown", "1000", "NewStreet"), User.Role.ADOPTER);
-//        Advertisement newAd = new Advertisement(UUID.randomUUID(), pet, petOwner, "Friendly and playful dog", location, Advertisement.Status.AVAILABLE);
-//        new Advertisement(new Pet("Milo", "A cute cat", new Location("NewCity", "State", "Country"), Pet.Type.CAT),
-//                new PetOwner(UUID.randomUUID(), "newowner@example.com", "password", "NewOwner", "Name", new Location("NewCity", "State", "Country"), User.Role.USER),
-//                "A cute cat", new Location("NewCity", "State", "Country"), Advertisement.Status.AVAILABLE);
-//
-//        AdoptionRequest newRequest = new AdoptionRequest(UUID.randomUUID(), newAdopter, newAd, AdoptionRequest.Status.APPROVED);
-//
-//        adoptionRequest.replaceWith(newRequest);
-//
-//        assertEquals(newRequest.getRequestID(), adoptionRequest.getRequestID(), "Request ID should be replaced");
-//        assertEquals(newRequest.getAdopter(), adoptionRequest.getAdopter(), "Adopter should be replaced");
-//        assertEquals(newRequest.getAdvertisement(), adoptionRequest.getAdvertisement(), "Advertisement should be replaced");
-//        assertEquals(newRequest.getStatus(), adoptionRequest.getStatus(), "Status should be replaced");
-//    }
+    @Test
+    void testReplaceWith() {
+        Adopter newAdopter = new Adopter(UUID.randomUUID(), "newadopter@example.com", "password", "NewFirstName", "NewLastName", new Location("NewTown", "1000", "NewStreet"), User.Role.ADOPTER);
+        Pet pet = new Pet("Luna", "Cat", "Persian Cat", false, Pet.Gender.FEMALE, "Independant Luna who needs a new home", "Calm", "Grey", false, true, true, false, 6, 200.0, Pet.Status.AVAILABLE, true, true, "none"); // Exemple d'initialisation
+        Advertisement newAd = new Advertisement(UUID.randomUUID(), pet, petOwner, "Friendly and playful dog", newAdopter.getLocation(), Advertisement.Status.AVAILABLE);
+        AdoptionRequest newRequest = new AdoptionRequest(UUID.randomUUID(), newAdopter, newAd, AdoptionRequest.Status.APPROVED);
 
-//    @Test
-//    void testReplaceWithThrowsExceptionIfNull() {
-//        Exception exception = assertThrows(IllegalArgumentException.class, () -> adoptionRequest.replaceWith(null));
-//        assertEquals("Adoption Request cannot be null", exception.getMessage(), "Exception message should match");
-//    }
-//}
+        adoptionRequest.replaceWith(newRequest);
+
+        assertEquals(newRequest.getRequestID(), adoptionRequest.getRequestID(), "Request ID should be replaced");
+        assertEquals(newRequest.getAdopter(), adoptionRequest.getAdopter(), "Adopter should be replaced");
+        assertEquals(newRequest.getAdvertisement(), adoptionRequest.getAdvertisement(), "Advertisement should be replaced");
+        assertEquals(newRequest.getStatus(), adoptionRequest.getStatus(), "Status should be replaced");
+    }
+
+    @Test
+    void testReplaceWithThrowsExceptionIfNull() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> adoptionRequest.replaceWith(null));
+        assertEquals("Adoption Request cannot be null", exception.getMessage(), "Exception message should match");
+    }
 }
+

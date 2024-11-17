@@ -51,7 +51,6 @@ public class AdoptionRequest {
     public boolean isPending() {return this.status == Status.PENDING;
     }
 
-    //TODO
     public void replaceWith(AdoptionRequest adoptionRequest) {
         if (adoptionRequest == null) {
             throw new IllegalArgumentException("Adoption Request cannot be null");
