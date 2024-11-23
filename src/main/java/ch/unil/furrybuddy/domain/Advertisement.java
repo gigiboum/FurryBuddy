@@ -58,4 +58,17 @@ public class Advertisement {
         this.location = advertisement.location;
         this.status = advertisement.status;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Reference check
+        if (o == null || getClass() != o.getClass()) return false; // Null and class check
+        Advertisement that = (Advertisement) o;
+        return advertisementID != null && advertisementID.equals(that.advertisementID); // Compare advertisementID
+    }
+
+    @Override
+    public int hashCode() {
+        return advertisementID != null ? advertisementID.hashCode() : 0; // Hash based on advertisementID
+    }
 }

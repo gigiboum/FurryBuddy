@@ -1,18 +1,16 @@
 package ch.unil.furrybuddy.domain;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class PetOwner extends User {
 
-    private Set<Advertisement> advertisements;
+    private List<Advertisement> advertisements;
 
     // Constructors
 
     public PetOwner() {
         super();
-        advertisements = new HashSet<>();
+        advertisements = new ArrayList<>();
     }
 
     public PetOwner(String email, String password, String firstname, String lastname, Location location, Role role) {
@@ -21,15 +19,15 @@ public class PetOwner extends User {
 
     public PetOwner(UUID id, String email, String password, String firstname, String lastname, Location location, Role role) {
         super(id, email, password, firstname, lastname, location, role);
-        advertisements = new HashSet<>();
+        advertisements = new ArrayList<>();
     }
 
     //Getters and setters
-    public Set<Advertisement> getAdvertisements() {
+    public List<Advertisement> getAdvertisements() {
         return advertisements;
     }
 
-    public void setAdvertisements(Set<Advertisement> advertisements) {
+    public void setAdvertisements(List<Advertisement> advertisements) {
         this.advertisements = advertisements;
     }
 
@@ -54,21 +52,22 @@ public class PetOwner extends User {
             }
         }
 
-        Advertisement ad = new Advertisement(pet, this.getUserID(), pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
+        Advertisement ad = new Advertisement(UUID.randomUUID(), pet, this.getUserID(), pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
         advertisements.add(ad);
         return ad;
     }
 
     public void deleteAdvertisement(Advertisement advertisement) {
-        advertisements.remove(advertisement);
+        this.advertisements.remove(advertisement);
     }
 
     public void acceptRequest(AdoptionRequest adoptionRequest) {
-        if (adoptionRequest.getStatus() == AdoptionRequest.Status.PENDING) {
-            adoptionRequest.setStatus(AdoptionRequest.Status.APPROVED);
-
-            adoptionRequest.getAdvertisement().setStatus(Advertisement.Status.UNAVAILABLE);
+        if (adoptionRequest.getStatus() != AdoptionRequest.Status.PENDING) {
+            throw new IllegalArgumentException("Adoption request is not waiting for decision");
         }
+        adoptionRequest.setStatus(AdoptionRequest.Status.APPROVED);
+        adoptionRequest.getAdvertisement().setStatus(Advertisement.Status.UNAVAILABLE);
+
     }
 
     public void rejectRequest(AdoptionRequest adoptionRequest) {

@@ -3,9 +3,7 @@ package ch.unil.furrybuddy.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,7 +41,7 @@ public class PetOwnerTest {
     @Test
     public void testSetAndGetAd(){
         //Creates a new set of ads
-        Set<Advertisement> ads = new HashSet<>();
+        List<Advertisement> ads = new ArrayList<>();
         ads.add(advertisement1);
         ads.add(advertisement2);
 
