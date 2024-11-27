@@ -13,7 +13,7 @@ public class PetTest {
 
     @BeforeEach
     void setUp() {
-        dummyPet = new Pet("Buddy", "Dog", "Golden Retriever", true, Pet.Gender.MALE, "Friendly", "Playful", "Golden", true, true, true, true, 3, 300.0, Pet.Status.AVAILABLE, true, true, "None");
+        dummyPet = new Pet("Buddy", "Dog", "Golden Retriever", true, Pet.Gender.MALE, "Friendly", "Playful", "Golden", true, true, true, true, 3, 300.0, true, true, "None");
     }
 
     // Test that the parameterized constructor initializes the fields correctly
@@ -33,7 +33,6 @@ public class PetTest {
         assertTrue(dummyPet.isCompatibleWithOtherAnimals());
         assertEquals(3, dummyPet.getAge());
         assertEquals(300.0, dummyPet.getPrice());
-        assertEquals(Pet.Status.AVAILABLE, dummyPet.getStatus());
         assertTrue(dummyPet.isSuitableForHouse());
         assertTrue(dummyPet.isVaccinated());
         assertEquals("None", dummyPet.getMedicalConditions());
@@ -131,12 +130,6 @@ public class PetTest {
     }
 
     @Test
-    void testSetStatus() {
-        dummyPet.setStatus(Pet.Status.PENDING);
-        assertEquals(Pet.Status.PENDING, dummyPet.getStatus());
-    }
-
-    @Test
     void testSetSuitableForHouse() {
         dummyPet.setSuitableForHouse(false);
         assertFalse(dummyPet.isSuitableForHouse());
@@ -157,7 +150,7 @@ public class PetTest {
     // Test replaceWith method
     @Test
     void testReplaceWith_UpdatesPetFields() {
-        Pet newPet = new Pet("Charlie", "Dog", "Labrador", true, Pet.Gender.MALE, "Loyal", "Friendly", "Yellow", true, true, false, true, 5, 400.0, Pet.Status.AVAILABLE, true, true, "None");
+        Pet newPet = new Pet("Charlie", "Dog", "Labrador", true, Pet.Gender.MALE, "Loyal", "Friendly", "Yellow", true, true, false, true, 5, 400.0, true, true, "None");
         dummyPet.replaceWith(newPet);
 
         assertEquals("Charlie", dummyPet.getName());
@@ -174,7 +167,6 @@ public class PetTest {
         assertTrue(dummyPet.isCompatibleWithOtherAnimals());
         assertEquals(5, dummyPet.getAge());
         assertEquals(400.0, dummyPet.getPrice());
-        assertEquals(Pet.Status.AVAILABLE, dummyPet.getStatus());
         assertTrue(dummyPet.isSuitableForHouse());
         assertTrue(dummyPet.isVaccinated());
         assertEquals("None", dummyPet.getMedicalConditions());

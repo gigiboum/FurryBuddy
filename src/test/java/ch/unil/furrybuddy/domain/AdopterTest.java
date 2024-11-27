@@ -22,7 +22,7 @@ class AdopterTest {
         adopter = new Adopter("milaliv@example.com", "12345", "Mila", "Livron", new Location("Paris", "75000", "10 Rue de Rivoli"), User.Role.PET_OWNER);
 
         // Initialisation des animaux de compagnie et des demandes d'adoption
-        pet1 = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, Pet.Status.AVAILABLE, true, true, "none");
+        pet1 = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, true, true, "none");
         var petOwnerID = UUID.randomUUID();
         advertisement1 = new Advertisement(pet1, petOwnerID,
                 "description",

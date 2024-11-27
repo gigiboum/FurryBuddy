@@ -27,8 +27,8 @@ public class PetOwnerTest {
                 new Location("Geneva","1203","Rue voltaire"),
                 User.Role.PET_OWNER);
 
-        pet1 = new Pet("Buddy", "Dog", "German Shepard", true, Pet.Gender.MALE, "Friendly", "Loyal", "Brown", true, true, true, false, 3, 150.0, Pet.Status.AVAILABLE, true, true, null);
-        pet2 = new Pet("Kiti", "Cat","Siamese",false, Pet.Gender.FEMALE, "Playful", "Curious", "White", true, true, false, true, 2, 100.0, Pet.Status.AVAILABLE, false, true, null);
+        pet1 = new Pet("Buddy", "Dog", "German Shepard", true, Pet.Gender.MALE, "Friendly", "Loyal", "Brown", true, true, true, false, 3, 150.0, true, true, null);
+        pet2 = new Pet("Kiti", "Cat","Siamese",false, Pet.Gender.FEMALE, "Playful", "Curious", "White", true, true, false, true, 2, 100.0, false, true, null);
 
         advertisement1 = new Advertisement(UUID.randomUUID(), pet1, petOwner.getUserID(), "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);
         advertisement2 = new Advertisement(UUID.randomUUID(), pet2, petOwner.getUserID(), "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);

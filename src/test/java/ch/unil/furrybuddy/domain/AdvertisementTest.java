@@ -18,7 +18,7 @@ public class AdvertisementTest {
         void setUp() {
             // Initialisation des objets pour le test
             requestID = UUID.randomUUID();
-            pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", "Friendly", "Beige", true, true, true, true, 3, 100.0, Pet.Status.AVAILABLE, true, true, "none"); // Exemple d'initialisation
+            pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", "Friendly", "Beige", true, true, true, true, 3, 100.0, true, true, "none"); // Exemple d'initialisation
             location = new Location("Paris", "75000", "10 Rue de Rivoli"); // Exemple d'initialisation
             petOwner = new PetOwner(UUID.randomUUID(),"milaliv@example.com", "12345", "Mila", "Livron",location, User.Role.PET_OWNER); // Exemple d'initialisation
             advertisement = new Advertisement(requestID, pet, petOwner.getUserID(),"Friendly and playful dog", location, Advertisement.Status.AVAILABLE);
@@ -41,7 +41,7 @@ public class AdvertisementTest {
             assertEquals(advertisementID, advertisement.getAdvertisementID());
 
             // Création d'un nouvel objet Pet pour tester les setters
-            Pet newPet = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, Pet.Status.AVAILABLE, true, true, "none");
+            Pet newPet = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, true, true, "none");
             advertisement.setPet(newPet);
             assertEquals(newPet, advertisement.getPet());
 

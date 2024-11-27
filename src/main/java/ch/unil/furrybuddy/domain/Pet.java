@@ -20,7 +20,6 @@ public class Pet {
     private boolean isCompatibleWithOtherAnimals;
     private int age;
     private double price;
-    private Status status;
     private boolean isSuitableForHouse;
     private boolean isVaccinated;
     private String medicalConditions;
@@ -29,21 +28,17 @@ public class Pet {
     public enum Gender {
         MALE, FEMALE
     }
-    // Enum for status
-    public enum Status {
-        AVAILABLE, PENDING, ADOPTED
-    }
 
     //Constructors
     public Pet(){
-        this(null, null, null, false, null, null, null, null, false, false, false, false, 0, 0.0,null, false,false, null);
+        this(null, null, null, false, null, null, null, null, false, false, false, false, 0, 0.0, false,false, null);
     }
 
-    public Pet(String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
-        this(null, name, species, breed, neutered, gender, description, personality, color, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, status, isSuitableForHouse, isVaccinated, medicalConditions );
+    public Pet(String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+        this(null, name, species, breed, neutered, gender, description, personality, color, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, isSuitableForHouse, isVaccinated, medicalConditions );
     }
 
-    public Pet(UUID petID, String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, Status status, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+    public Pet(UUID petID, String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
         this.petID = petID;
         this.name = name;
         this.species = species;
@@ -59,7 +54,6 @@ public class Pet {
         this.isCompatibleWithOtherAnimals = isCompatibleWithOtherAnimals;
         this.age = age;
         this.price = price;
-        this.status = status;
         this.isSuitableForHouse = isSuitableForHouse;
         this.isVaccinated = isVaccinated;
         this.medicalConditions = medicalConditions;
@@ -149,12 +143,6 @@ public class Pet {
     public void setPrice(double price) {
         this.price = price;
     }
-    public Status getStatus() {
-        return status;
-    }
-    public void setStatus(Status status) {
-        this.status = status;
-    }
     public boolean isSuitableForHouse() {
         return isSuitableForHouse;
     }
@@ -191,7 +179,6 @@ public class Pet {
         this.isCompatibleWithOtherAnimals = pet.isCompatibleWithOtherAnimals;
         this.age = pet.age;
         this.price = pet.price;
-        this.status = pet.status;
         this.isSuitableForHouse = pet.isSuitableForHouse;
         this.isVaccinated = pet.isVaccinated;
         this.medicalConditions = pet.medicalConditions;
