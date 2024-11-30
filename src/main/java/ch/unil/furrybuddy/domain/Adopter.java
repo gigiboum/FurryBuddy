@@ -35,19 +35,23 @@ public class Adopter extends User {
 
     // create a new adoption request
     public AdoptionRequest createAdoptionRequest(Advertisement advertisement) {
-        var request = new AdoptionRequest();
-        request.setAdopterID(this.getUserID());
-        request.setAdvertisement(advertisement);
-        request.setStatus(AdoptionRequest.Status.PENDING);
+        if (advertisement == null) {
+            throw new IllegalArgumentException("Advertisement cannot be null");
+        }
+        for (AdoptionRequest ar : adoptionRequests) {
+            if (ar.getAdvertisement().equals(advertisement)) {
+                throw new IllegalStateException("A request for this advertisement has already been made.");
+            }
+        }
+        AdoptionRequest request = new AdoptionRequest(UUID.randomUUID(), this.getUserID(),advertisement, AdoptionRequest.Status.PENDING, "example message of an adopter who is interested");
         adoptionRequests.add(request);
-
         return request;
     }
 
     // cancel an existing adoption request
     public void cancelAdoptionRequest(AdoptionRequest request) {
         request.setStatus(AdoptionRequest.Status.CANCELLED);
-        adoptionRequests.remove(request);
+//        adoptionRequests.remove(request);
     }
 }
 

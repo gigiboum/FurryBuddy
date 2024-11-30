@@ -13,7 +13,7 @@ public class PetTest {
 
     @BeforeEach
     void setUp() {
-        dummyPet = new Pet("Buddy", "Dog", "Golden Retriever", true, Pet.Gender.MALE, "Friendly", "Playful", "Golden", true, true, true, true, 3, 300.0, true, true, "None");
+        dummyPet = new Pet("Buddy", "Dog", "Golden Retriever", true, Pet.Gender.MALE, "Friendly", true, true, true, true, 3, 300.0, true, true, "None");
     }
 
     // Test that the parameterized constructor initializes the fields correctly
@@ -25,8 +25,6 @@ public class PetTest {
         assertTrue(dummyPet.isNeutered());
         assertEquals(Pet.Gender.MALE, dummyPet.getGender());
         assertEquals("Friendly", dummyPet.getDescription());
-        assertEquals("Playful", dummyPet.getPersonality());
-        assertEquals("Golden", dummyPet.getColor());
         assertTrue(dummyPet.isCompatibleWithInexperiencedOwners());
         assertTrue(dummyPet.isCompatibleWithKids());
         assertTrue(dummyPet.isCompatibleWithFamilies());
@@ -79,18 +77,6 @@ public class PetTest {
     void testSetDescription() {
         dummyPet.setDescription("Loyal");
         assertEquals("Loyal", dummyPet.getDescription());
-    }
-
-    @Test
-    void testSetPersonality() {
-        dummyPet.setPersonality("Energetic");
-        assertEquals("Energetic", dummyPet.getPersonality());
-    }
-
-    @Test
-    void testSetColor() {
-        dummyPet.setColor("Brown");
-        assertEquals("Brown", dummyPet.getColor());
     }
 
     @Test
@@ -150,7 +136,7 @@ public class PetTest {
     // Test replaceWith method
     @Test
     void testReplaceWith_UpdatesPetFields() {
-        Pet newPet = new Pet("Charlie", "Dog", "Labrador", true, Pet.Gender.MALE, "Loyal", "Friendly", "Yellow", true, true, false, true, 5, 400.0, true, true, "None");
+        Pet newPet = new Pet("Charlie", "Dog", "Labrador", true, Pet.Gender.MALE, "Loyal", true, true, false, true, 5, 400.0, true, true, "None");
         dummyPet.replaceWith(newPet);
 
         assertEquals("Charlie", dummyPet.getName());
@@ -159,8 +145,6 @@ public class PetTest {
         assertTrue(dummyPet.isNeutered());
         assertEquals(Pet.Gender.MALE, dummyPet.getGender());
         assertEquals("Loyal", dummyPet.getDescription());
-        assertEquals("Friendly", dummyPet.getPersonality());
-        assertEquals("Yellow", dummyPet.getColor());
         assertTrue(dummyPet.isCompatibleWithInexperiencedOwners());
         assertTrue(dummyPet.isCompatibleWithKids());
         assertFalse(dummyPet.isCompatibleWithFamilies());

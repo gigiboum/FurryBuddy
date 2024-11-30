@@ -22,7 +22,7 @@ class AdopterTest {
         adopter = new Adopter("milaliv@example.com", "12345", "Mila", "Livron", new Location("Paris", "75000", "10 Rue de Rivoli"), User.Role.PET_OWNER);
 
         // Initialisation des animaux de compagnie et des demandes d'adoption
-        pet1 = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "Independant", "", "brown", true, false, false, false, 2, 150.0, true, true, "none");
+        pet1 = new Pet("Ivy", "Cat", "Persian", true, Pet.Gender.FEMALE, "",true,  false, false, false, 2, 150.0, true, true, "none");
         var petOwnerID = UUID.randomUUID();
         advertisement1 = new Advertisement(pet1, petOwnerID,
                 "description",
@@ -33,7 +33,7 @@ class AdopterTest {
                 Advertisement.Status.AVAILABLE
                 );
 
-        request1 = new AdoptionRequest(UUID.randomUUID(), adopter.getUserID(), advertisement1, AdoptionRequest.Status.PENDING);
+        request1 = new AdoptionRequest(UUID.randomUUID(), adopter.getUserID(), advertisement1, AdoptionRequest.Status.PENDING, "message from adopter");
 
     }
 
@@ -75,9 +75,9 @@ class AdopterTest {
     @Test
     void testCancelAdoptionRequest() {
         var req = adopter.createAdoptionRequest(advertisement1);
-        assertEquals(1, adopter.getAdoptionRequests().size());
+        assertEquals("PENDING", req.getStatus().name());
 
         adopter.cancelAdoptionRequest(req);
-        assertEquals(0, adopter.getAdoptionRequests().size());
+        assertEquals("CANCELLED", req.getStatus().name());
     }
 }

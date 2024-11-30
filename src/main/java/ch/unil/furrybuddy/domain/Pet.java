@@ -12,8 +12,6 @@ public class Pet {
     private boolean neutered;
     private Gender gender;
     private String description;
-    private String personality;
-    private String color;
     private boolean isCompatibleWithInexperiencedOwners;
     private boolean isCompatibleWithKids;
     private boolean isCompatibleWithFamilies;
@@ -31,14 +29,14 @@ public class Pet {
 
     //Constructors
     public Pet(){
-        this(null, null, null, false, null, null, null, null, false, false, false, false, 0, 0.0, false,false, null);
+        this(null, null, null, false, null, null, false, false, false, false, 0, 0.0, false,false, null);
     }
 
-    public Pet(String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
-        this(null, name, species, breed, neutered, gender, description, personality, color, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, isSuitableForHouse, isVaccinated, medicalConditions );
+    public Pet(String name, String species, String breed, boolean neutered, Gender gender, String description, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+        this(null, name, species, breed, neutered, gender, description, isCompatibleWithInexperiencedOwners, isCompatibleWithKids, isCompatibleWithFamilies, isCompatibleWithOtherAnimals, age, price, isSuitableForHouse, isVaccinated, medicalConditions );
     }
 
-    public Pet(UUID petID, String name, String species, String breed, boolean neutered, Gender gender, String description, String personality, String color, boolean isCompatibleWithInexperiencedOwners,boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
+    public Pet(UUID petID, String name, String species, String breed, boolean neutered, Gender gender, String description, boolean isCompatibleWithInexperiencedOwners, boolean isCompatibleWithKids,  boolean isCompatibleWithFamilies, boolean isCompatibleWithOtherAnimals, int age, double price, boolean isSuitableForHouse, boolean isVaccinated, String medicalConditions) {
         this.petID = petID;
         this.name = name;
         this.species = species;
@@ -46,8 +44,6 @@ public class Pet {
         this.neutered = neutered;
         this.gender = gender;
         this.description = description;
-        this.personality = personality;
-        this.color = color;
         this.isCompatibleWithInexperiencedOwners = isCompatibleWithInexperiencedOwners;
         this.isCompatibleWithKids = isCompatibleWithKids;
         this.isCompatibleWithFamilies = isCompatibleWithFamilies;
@@ -102,18 +98,6 @@ public class Pet {
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-    public String getPersonality() {
-        return personality;
-    }
-    public void setPersonality(String personality) {
-        this.personality = personality;
-    }
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
     }
     public boolean isCompatibleWithInexperiencedOwners() {
         return isCompatibleWithInexperiencedOwners;
@@ -171,8 +155,6 @@ public class Pet {
         this.neutered = pet.neutered;
         this.gender = pet.gender;
         this.description = pet.description;
-        this.personality = pet.personality;
-        this.color = pet.color;
         this.isCompatibleWithInexperiencedOwners = pet.isCompatibleWithInexperiencedOwners;
         this.isCompatibleWithKids = pet.isCompatibleWithKids;
         this.isCompatibleWithFamilies = pet.isCompatibleWithFamilies;

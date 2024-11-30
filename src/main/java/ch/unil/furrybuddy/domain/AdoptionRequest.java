@@ -4,10 +4,10 @@ import java.util.UUID;
 
 public class AdoptionRequest {
     private UUID requestID;
-//    private Adopter adopter;
     private UUID adopterID;
     private Advertisement advertisement;
     private Status status;
+    private String message;
 
     // Enum for Status
     public enum Status {
@@ -16,18 +16,19 @@ public class AdoptionRequest {
 
     // Constructors
     public AdoptionRequest() {
-        this(null, null, null);
+        this(null, null, null, null);
     }
 
-    public AdoptionRequest(UUID adopterID, Advertisement advertisement, Status status) {
-        this(null, adopterID, advertisement, status);
+    public AdoptionRequest(UUID adopterID, Advertisement advertisement, Status status, String message) {
+        this(null, adopterID, advertisement, status, message);
     }
 
-    public AdoptionRequest(UUID requestID, UUID adopterID, Advertisement advertisement, Status status) {
+    public AdoptionRequest(UUID requestID, UUID adopterID, Advertisement advertisement, Status status, String message) {
         this.requestID = requestID;
         this.adopterID = adopterID;
         this.advertisement = advertisement;
         this.status = status;
+        this.message = message;
     }
     // Getters and Setters
     public UUID getRequestID() {
@@ -49,6 +50,12 @@ public class AdoptionRequest {
     public void setStatus(Status status) {this.status = status;
     }
 
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
     public boolean isPending() {return this.status == Status.PENDING;
     }
 

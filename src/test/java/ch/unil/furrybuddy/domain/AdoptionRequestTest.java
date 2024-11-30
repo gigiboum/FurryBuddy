@@ -17,13 +17,13 @@ public class AdoptionRequestTest {
     @BeforeEach
     void setUp() {
         Location location = new Location("Zurich", "8004", "10 Rivolistrasse");
-        Pet pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", "Friendly", "Beige", true, true, true, true, 3, 100.0, true, true, "none"); // Exemple d'initialisation
+        Pet pet = new Pet("Bella", "Dog", "Golden Retriever", true, Pet.Gender.FEMALE, "Friendly and playful", true, true, true, true, 3, 100.0, true, true, "none"); // Exemple d'initialisation
 
         adopter = new Adopter("jondoe@example.com", "12345", "Jon", "Doe", location, User.Role.ADOPTER);
         petOwner = new PetOwner(UUID.randomUUID(),"milaliv@example.com", "12345", "Mila", "Livron", location, User.Role.PET_OWNER); // Exemple d'initialisation
         advertisement = new Advertisement(UUID.randomUUID(), pet, petOwner.getUserID(), "Friendly and playful dog", location, Advertisement.Status.AVAILABLE);
         requestID = UUID.randomUUID();
-        adoptionRequest = new AdoptionRequest(requestID, adopter.getUserID(), advertisement, AdoptionRequest.Status.PENDING);
+        adoptionRequest = new AdoptionRequest(requestID, adopter.getUserID(), advertisement, AdoptionRequest.Status.PENDING, "message from adopter");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class AdoptionRequestTest {
     void testSetAdvertisement() {
         Location newLocation = new Location("NewTown", "1000", "NewStreet");
         PetOwner newPetOwner = new PetOwner(UUID.randomUUID(), "newowner@example.com", "password", "NewName", "NewLastName", newLocation, User.Role.PET_OWNER);
-        Pet newPet = new Pet("Milo", "Cat", "Siamese", true, Pet.Gender.FEMALE, "A cute cat", "Fun", "Brown", true, true, false, false, 2, 200.0, true, true, "none");
+        Pet newPet = new Pet("Milo", "Cat", "Siamese", true, Pet.Gender.FEMALE, "A cute cat", true, true, false, false, 2, 200.0, true, true, "none");
         Advertisement newAdvertisement = new Advertisement(newPet, newPetOwner.getUserID(), "A cute cat", newLocation, Advertisement.Status.AVAILABLE);
 
         adoptionRequest.setAdvertisement(newAdvertisement);
@@ -92,9 +92,9 @@ public class AdoptionRequestTest {
     @Test
     void testReplaceWith() {
         Adopter newAdopter = new Adopter(UUID.randomUUID(), "newadopter@example.com", "password", "NewFirstName", "NewLastName", new Location("NewTown", "1000", "NewStreet"), User.Role.ADOPTER);
-        Pet pet = new Pet("Luna", "Cat", "Persian Cat", false, Pet.Gender.FEMALE, "Independant Luna who needs a new home", "Calm", "Grey", false, true, true, false, 6, 200.0, true, true, "none"); // Exemple d'initialisation
+        Pet pet = new Pet("Luna", "Cat", "Persian Cat", false, Pet.Gender.FEMALE, "Independant Luna who needs a new home", false, true, true, false, 6, 200.0, true, true, "none"); // Exemple d'initialisation
         Advertisement newAd = new Advertisement(UUID.randomUUID(), pet, petOwner.getUserID(), "Friendly and playful dog", newAdopter.getLocation(), Advertisement.Status.AVAILABLE);
-        AdoptionRequest newRequest = new AdoptionRequest(UUID.randomUUID(), newAdopter.getUserID(), newAd, AdoptionRequest.Status.APPROVED);
+        AdoptionRequest newRequest = new AdoptionRequest(UUID.randomUUID(), newAdopter.getUserID(), newAd, AdoptionRequest.Status.APPROVED, "message from adopter");
 
         adoptionRequest.replaceWith(newRequest);
 

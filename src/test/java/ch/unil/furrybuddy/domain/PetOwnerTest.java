@@ -27,14 +27,14 @@ public class PetOwnerTest {
                 new Location("Geneva","1203","Rue voltaire"),
                 User.Role.PET_OWNER);
 
-        pet1 = new Pet("Buddy", "Dog", "German Shepard", true, Pet.Gender.MALE, "Friendly", "Loyal", "Brown", true, true, true, false, 3, 150.0, true, true, null);
-        pet2 = new Pet("Kiti", "Cat","Siamese",false, Pet.Gender.FEMALE, "Playful", "Curious", "White", true, true, false, true, 2, 100.0, false, true, null);
+        pet1 = new Pet("Buddy", "Dog", "German Shepard", true, Pet.Gender.MALE, "Friendly", true, true, true, false, 3, 150.0, true, true, null);
+        pet2 = new Pet("Kiti", "Cat","Siamese",false, Pet.Gender.FEMALE, "Playful", true, true, false, true, 2, 100.0, false, true, null);
 
         advertisement1 = new Advertisement(UUID.randomUUID(), pet1, petOwner.getUserID(), "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);
         advertisement2 = new Advertisement(UUID.randomUUID(), pet2, petOwner.getUserID(), "Friendly and playful dog", petOwner.getLocation(), Advertisement.Status.AVAILABLE);
 
         adopter = new Adopter("milaliv@example.com", "12345", "Mila", "Livron", new Location("Paris", "75000", "10 Rue de Rivoli"), User.Role.PET_OWNER);
-        request = new AdoptionRequest(UUID.randomUUID(), adopter.getUserID(), advertisement1, AdoptionRequest.Status.PENDING);
+        request = new AdoptionRequest(UUID.randomUUID(), adopter.getUserID(), advertisement1, AdoptionRequest.Status.PENDING, "message from adopter");
 
     }
 
