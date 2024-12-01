@@ -34,7 +34,7 @@ public class Adopter extends User {
     // actions
 
     // create a new adoption request
-    public AdoptionRequest createAdoptionRequest(Advertisement advertisement) {
+    public AdoptionRequest createAdoptionRequest(Advertisement advertisement, String message) {
         if (advertisement == null) {
             throw new IllegalArgumentException("Advertisement cannot be null");
         }
@@ -43,7 +43,7 @@ public class Adopter extends User {
                 throw new IllegalStateException("A request for this advertisement has already been made.");
             }
         }
-        AdoptionRequest request = new AdoptionRequest(UUID.randomUUID(), this.getUserID(),advertisement, AdoptionRequest.Status.PENDING, "example message of an adopter who is interested");
+        AdoptionRequest request = new AdoptionRequest(UUID.randomUUID(), this.getUserID(),advertisement, AdoptionRequest.Status.PENDING, message);
         adoptionRequests.add(request);
         return request;
     }

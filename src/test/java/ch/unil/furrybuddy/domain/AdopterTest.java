@@ -65,7 +65,7 @@ class AdopterTest {
 
     @Test
     void testCreateAdoptionRequest() {
-        var newRequest = adopter.createAdoptionRequest(advertisement1);
+        var newRequest = adopter.createAdoptionRequest(advertisement1, "example message of an adopter who is interested");
 
         assertEquals(1, adopter.getAdoptionRequests().size());
         assertTrue(adopter.getAdoptionRequests().contains(newRequest));
@@ -74,7 +74,7 @@ class AdopterTest {
 
     @Test
     void testCancelAdoptionRequest() {
-        var req = adopter.createAdoptionRequest(advertisement1);
+        var req = adopter.createAdoptionRequest(advertisement1, "example message of an adopter who is interested");
         assertEquals("PENDING", req.getStatus().name());
 
         adopter.cancelAdoptionRequest(req);
