@@ -11,6 +11,7 @@ public class Advertisement {
     private String description;
     private Location location;
     private Status status;
+    private String imageURL;
 
     public enum Status {
         AVAILABLE, UNAVAILABLE
@@ -46,6 +47,12 @@ public class Advertisement {
     public void setLocation(Location location) { this.location = location;}
     public Status getStatus() {return status;}
     public void setStatus(Status status) {this.status = status;}
+    public String getImageURL() {
+        return imageURL;
+    }
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public void replaceWith(Advertisement advertisement) {
         if (advertisement == null) {
