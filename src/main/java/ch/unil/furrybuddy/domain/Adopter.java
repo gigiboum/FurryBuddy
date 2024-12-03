@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+//TODO for phase 3
+// Add @Transient to complex fields such as lists, to start off simple and get it working for basic fields
+// Look at studybuddy example with persistence
+// All methods interacting with DB should have @Transactional annotation
+// Add @Inheritance to User class
+// @Entity for classes managed by DB
+
 public class Adopter extends User {
 
     // Class fields
