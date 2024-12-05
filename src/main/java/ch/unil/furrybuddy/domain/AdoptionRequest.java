@@ -1,12 +1,23 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
+@Entity
 public class AdoptionRequest {
+    @Id
     private UUID requestID;
+
     private UUID adopterID;
+
+    @OneToOne
+    @JoinColumn(name="ADVERTISEMENT")
     private Advertisement advertisement;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
     private String message;
 
     // Enum for Status

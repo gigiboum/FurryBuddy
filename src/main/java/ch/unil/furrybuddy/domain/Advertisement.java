@@ -1,16 +1,31 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
+@Entity
 public class Advertisement {
 
     // Class fields
+    @Id
     private UUID advertisementID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="PET")
     private Pet pet;
+
     private UUID petOwnerID;
     private String description;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="LOCATION")
     private Location location;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Transient
     private String imageURL;
 
     public enum Status {

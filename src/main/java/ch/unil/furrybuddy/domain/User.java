@@ -1,16 +1,28 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     // class fields
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USERID", updatable = false, nullable = false)
     private UUID userID;
+
     private String email;
     private String password;
     private String firstName;
     private String lastName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="LOCATION")
     private Location location; // Correction de la capitalisation
+
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     // constructors

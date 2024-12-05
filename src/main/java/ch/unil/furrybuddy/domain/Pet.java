@@ -1,16 +1,26 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+
 import java.util.UUID;
 
+@Entity
 public class Pet {
 
     //class fields
+    @Id
     private UUID petID;
     private String name;
     private String species;
     private String breed;
     private boolean neutered;
+
+    @Enumerated(EnumType.STRING)
     private Gender gender;
+
     private String description;
     private boolean isCompatibleWithInexperiencedOwners;
     private boolean isCompatibleWithKids;

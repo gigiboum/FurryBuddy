@@ -1,9 +1,14 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.*;
+
 import java.util.*;
 
+@Entity
 public class PetOwner extends User {
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ADVERTISEMENT")
     private List<Advertisement> advertisements;
 
     // Constructors

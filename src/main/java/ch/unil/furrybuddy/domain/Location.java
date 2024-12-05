@@ -1,10 +1,17 @@
 package ch.unil.furrybuddy.domain;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Location {
     private String town;
     private String postalCode;
     private String address;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", updatable = false, nullable = false)
+    private Long id;
 
     public Location(){}
 
