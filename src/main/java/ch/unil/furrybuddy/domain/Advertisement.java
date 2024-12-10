@@ -18,7 +18,7 @@ public class Advertisement {
     private UUID petOwnerID;
     private String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="LOCATION")
     private Location location;
 

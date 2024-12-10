@@ -2,6 +2,8 @@ package ch.unil.furrybuddy.domain;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 public class Location {
     private String town;
@@ -24,6 +26,12 @@ public class Location {
 
     // getters and setters
 
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id = id;
+    }
     public String getTown() {
         return town;
     }

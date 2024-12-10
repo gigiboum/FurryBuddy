@@ -8,7 +8,7 @@ import java.util.*;
 public class PetOwner extends User {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ADVERTISEMENT")
+    @JoinColumn(name = "PETOWNER")
     private List<Advertisement> advertisements;
 
     // Constructors
@@ -59,6 +59,7 @@ public class PetOwner extends User {
 
         Advertisement ad = new Advertisement(UUID.randomUUID(), pet, this.getUserID(), pet.getDescription(),getLocation(), Advertisement.Status.AVAILABLE);
         advertisements.add(ad);
+//        ad.setPetOwnerID(this.getUserID());
         return ad;
     }
 

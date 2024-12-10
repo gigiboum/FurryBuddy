@@ -18,7 +18,7 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="LOCATION")
     private Location location; // Correction de la capitalisation
 
