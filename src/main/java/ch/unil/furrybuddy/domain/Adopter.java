@@ -54,9 +54,10 @@ public class Adopter extends User {
     }
 
     // cancel an existing adoption request
-    public void cancelAdoptionRequest(AdoptionRequest request) {
-        request.setStatus(AdoptionRequest.Status.CANCELLED);
-//        adoptionRequests.remove(request);
+    public void cancelAdoptionRequest(AdoptionRequest adoptionRequest) {
+        if (adoptionRequest.getStatus() == AdoptionRequest.Status.PENDING) {
+            adoptionRequest.setStatus(AdoptionRequest.Status.CANCELLED);
+        }
     }
 }
 
